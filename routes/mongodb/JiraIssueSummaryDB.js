@@ -1,8 +1,6 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-``
-mongoose.connect('mongodb://localhost:32768/vuedashboardtiles');
+var mongoose = require('./db');
 
+var Schema = mongoose.Schema;
 
 var JiraIssueSummarySchema = new Schema({
   date: {
@@ -14,20 +12,60 @@ var JiraIssueSummarySchema = new Schema({
   filterURL: String,
   newCount: {
     type: Map,
-    of: String
+    of: Number
   }, /* map will will have severity as key for example  1, 2, 3, 4 */
   regressionCount: {
     type: Map,
-    of: String
+    of: Number
   },
   escapeCount: {
     type: Map,
-    of: String
+    of: Number
   },
   rawData: Map
 });
 
 var JiraIssueSummary = mongoose.model('JiraIssueSummary', JiraIssueSummarySchema);
-Animal.findByName('fido', function(err, animals) {
-  console.log(animals);
-});
+module.exports = JiraIssueSummary;
+// let now = new Date();
+// let today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+// let tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+// console.log(today);
+// console.log(tomorrow);
+// JiraIssueSummary.find({'date': {'$gte': today}, 'date': {'$lt': tomorrow}}, (err, res) => {
+//   console.log(JiraIssueSummary.base.disconnect());
+// });
+
+// JiraIssueSummary.find({}, (err, res) => {
+//   console.log(new Date(res[0].date));
+// })
+// let jira1 = new JiraIssueSummary({
+//   filterTitle: 'title',
+//   filterURL: 'http://',
+//   newCount: {
+//     '1': 0,
+//     '2': 5,
+//     '3': 10,
+//     '4': 20
+//   },
+//   regressionCount: {
+//     '1': 0,
+//     '2': 1,
+//     '3': 3,
+//     '4': 1
+//   },
+//   escapeCount: {
+//     '1': 0,
+//     '2': 2,
+//     '3': 5,
+//     '4': 8
+//   }
+// });
+// jira1.save( function (err, res) {
+//   if (err) {
+//     console.log("Error:" + err);
+//   }
+//   else {
+//       console.log("Res:" + res);
+//   }
+// });
