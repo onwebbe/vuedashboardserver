@@ -8,14 +8,14 @@ router.get('/getDashBoardConfig', function(req, res, next) {
     configData: {
       'headText': 'Title',
       'screenConfig': {
-        'echartTheme': 'dark',
+        'echartTheme': 'light',
         'slideStayTime': 10000,
         'screens': [{
           'totalRows': 3,
           'totalColumns': 3,
           'totalPages': 2,
           'updateFrequency': '24h',
-          'themeing': 'black'
+          'themeing': 'fiori'
         }]
       },
       'tilesConfig': {
