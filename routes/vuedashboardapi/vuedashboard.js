@@ -23,7 +23,7 @@ router.get('/getDashBoardConfig', function(req, res, next) {
       },
       'screens': [{
         'tilesLayout': [[{
-          'tileName': 'DashBoardUTNewCodeCovTile',
+          'tileName': 'QuanlityTestingStatusTile',
           'rowSpan': 2,
           'tileTitle': 'New Code UT Coverage'
         }, {
@@ -39,7 +39,6 @@ router.get('/getDashBoardConfig', function(req, res, next) {
   };
   res.send(JSON.stringify(configData));
 });
-
 router.get('/fetchJiraSprintTicketInfo', function(req, res, next) {
 
 });
