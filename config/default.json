@@ -1,4 +1,8 @@
 {
+  "apiServer": {
+    "serverURL": "http://10.129.126.28:5500",
+    "jenkinsjobAPIPath": "/jenkinsjob"
+  },
   "file" : "./xunit.xml",
   "consoleOutput" : {
     "suite" : true,
@@ -9,7 +13,7 @@
     "host"     : "localhost",
     "user"     : "root",
     "password" : "123456",
-    "database" : "zizhifiles",
+    "database" : "",
     "port": 3306
   },
   "emailConfig": {
@@ -28,7 +32,7 @@
         "fileOutputStandard": {
           "type": "file",
           "filename": "logs/access.log", 
-          "maxLogSize": 1024,
+          "maxLogSize": 1024000,
           "backups": 3
         }
       },

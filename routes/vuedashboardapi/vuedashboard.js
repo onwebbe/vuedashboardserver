@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-
+var JenkinsJobsSummaryWorker = require('../workers/JenkinsJobsSummaryWorker');
 /* GET home page. */
 router.get('/getDashBoardConfig', function(req, res, next) {
   let configData = {
@@ -12,7 +12,7 @@ router.get('/getDashBoardConfig', function(req, res, next) {
         'slideStayTime': 10000,
         'screens': [{
           'totalRows': 3,
-          'totalColumns': 3,
+          'totalColumns': 2,
           'totalPages': 2,
           'updateFrequency': '24h',
           'themeing': 'fiori'
@@ -41,5 +41,12 @@ router.get('/getDashBoardConfig', function(req, res, next) {
 });
 router.get('/fetchJiraSprintTicketInfo', function(req, res, next) {
 
+});
+router.get('/fetchJenkinsJobSummary', function(req, res, next) {
+  let jenkinsJobsSummaryWorker = new JenkinsJobsSummaryWorker();
+  jenkinsJobsSummaryWorker.init();
+  jenkinsJobsSummaryWorker.start().then(function (data) {
+    res.send(JSON.stringify(data));
+  })
 });
 module.exports = router;

@@ -31,7 +31,7 @@ class JiraIssueSummaryWorker {
       let jiraInfo = await this.getJiraData();
       let isInserted = await this.checkIfTodayAlreadyInserted();
       if (!isInserted) {
-        this.saveJiraData(jiraInfo);
+        await this.saveJiraData(jiraInfo);
       }
     } catch (e) {
       logger.error('JiraIssueSummaryWorker:start:error with message:' + e.message);
@@ -77,8 +77,10 @@ class JiraIssueSummaryWorker {
       'rawData': data
     }
     let record = new JiraDB(dbData);
-    record.save((err, res) => {
-      logger.info('JiraIssueSummaryWorker:saveJiraData:done');;
+    return new Promise((resolve, reject) => {
+        record.save((err, res) => {
+        logger.info('JiraIssueSummaryWorker:saveJiraData:done');;
+        });
     });
   }
   _getSectionCount(headerFields, sectionData) {
