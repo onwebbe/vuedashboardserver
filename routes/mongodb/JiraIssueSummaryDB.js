@@ -27,14 +27,7 @@ var JiraIssueSummarySchema = new Schema({
 
 var JiraIssueSummary = mongoose.model('JiraIssueSummary', JiraIssueSummarySchema);
 module.exports = JiraIssueSummary;
-// let now = new Date();
-// let today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-// let tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
-// console.log(today);
-// console.log(tomorrow);
-// JiraIssueSummary.find({'date': {'$gte': today}, 'date': {'$lt': tomorrow}}, (err, res) => {
-//   console.log(JiraIssueSummary.base.disconnect());
-// });
+ 
 
 // JiraIssueSummary.find({}, (err, res) => {
 //   console.log(new Date(res[0].date));

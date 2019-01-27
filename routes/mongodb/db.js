@@ -1,5 +1,5 @@
-var mongoose = require('mongoose'),
-    DB_URL = 'mongodb://localhost:32768/vuedashboardtiles';
+var mongoose = require('mongoose');
+var DB_URL = 'mongodb://localhost:32768/vuedashboardtiles';
 const logger = require('../../Logger');
 
 /**

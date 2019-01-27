@@ -74,7 +74,19 @@ class JenkinsJobsSummaryWorker {
             }
             statusListObj[status] = statusCountObj;
           }
-          statusListObj = this._mergeStatus(statusListObj, jobDetail.build_number);
+          if (statusListObj['PASSED'] == null) {
+            statusListObj['PASSED'] = {
+              'status': 'PASSED',
+              'count': 0
+            };
+          }
+          if (statusListObj['FAILED'] == null) {
+            statusListObj['FAILED'] = {
+              'status': 'FAILED',
+              'count': 0
+            };
+          }
+          statusListObj = this._mergeStatus(statusListObj, iterator == 0 ? 'latest' : 'latest-' + iterator);
           jobDetailList.push(statusListObj);
           iterator ++;
         }
@@ -84,7 +96,7 @@ class JenkinsJobsSummaryWorker {
           break;
         }
       }
-      resolve(jobDetailList);
+      resolve(jobDetailList.reverse());
     });
   }
   _mergeStatus(statusListObj, buildNumber) {
@@ -101,7 +113,7 @@ class JenkinsJobsSummaryWorker {
         let mappedStatus = statusMapping[status];
         if (mergedStatusList[mappedStatus] == null) {
           mergedStatusList[mappedStatus] = count;
-          mergedStatusList['build-number'] = buildNumber;
+          mergedStatusList['buildNumber'] = buildNumber;
         } else {
           mergedStatusList[mappedStatus] += count;
         }
@@ -111,6 +123,7 @@ class JenkinsJobsSummaryWorker {
   }
   _retriveJobDetail(jobname, buildnum) {
     let buildDetailURL = this._config.baseURL + '/api/jobsummary/' + jobname + '/' + buildnum;
+    logger.info('JenkinsJobsSummaryWorker:_retriveJobDetail:Get data from:' + buildDetailURL);
     return new Promise((resolve, reject) => {
       request.get(buildDetailURL).then(res => {
         // res.body, res.headers, res.status
