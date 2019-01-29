@@ -3,14 +3,15 @@ var router = express.Router();
 var JenkinsJobsSummaryWorker = require('../workers/JenkinsJobsSummaryWorker');
 var GetDashboardConfigWorker = require('../workers/GetDashboardConfigWorker');
 const logger = require('../../Logger');
+const utils = require('../Utils');
 /* GET home page. */
 router.get('/getDashBoardConfig', function(req, res, next) {
   logger.info('ROUTER:getDashBoardConfig');
   let getDashboardConfigWorker = new GetDashboardConfigWorker();
   getDashboardConfigWorker.init();
-  console.log(getDashboardConfigWorker.start().then( configdata => {
-    res.send(configdata.dashboardConfig);
-  }));
+  getDashboardConfigWorker.start().then( configdata => {
+    res.send(utils.composeJSONReply(true, configdata.dashboardConfig, ''));
+  });
   // let configData = {
   //   success: true,
   //   configData: {
@@ -54,7 +55,8 @@ router.get('/fetchJenkinsJobSummary', function(req, res, next) {
   let jenkinsJobsSummaryWorker = new JenkinsJobsSummaryWorker();
   jenkinsJobsSummaryWorker.init();
   jenkinsJobsSummaryWorker.start().then(function (data) {
-    res.send(JSON.stringify(data));
+    res.send(utils.composeJSONReply(true, data, ''));
+    
   })
 });
 module.exports = router;
