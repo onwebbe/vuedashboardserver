@@ -9,6 +9,11 @@
     "test" : true,
     "fail" : false
   },
+  "mongoDBConfig": {
+    "connectURL"  : "mongodb://localhost:32768/vuedashboardtiles",
+    "user"        : "vuedashboard",
+    "password"    : "board"
+  },
   "databaseConfig": {
     "host"     : "localhost",
     "user"     : "root",

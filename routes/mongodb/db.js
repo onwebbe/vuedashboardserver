@@ -1,11 +1,14 @@
 var mongoose = require('mongoose');
-var DB_URL = 'mongodb://localhost:32768/vuedashboardtiles';
 const logger = require('../../Logger');
-
+const config = require('config');
+const connectionOptions = {
+  user: config.mongoDBConfig.user,
+  pass: config.mongoDBConfig.password
+}
 /**
  * 连接
  */
-mongoose.connect(DB_URL);
+mongoose.connect(config.mongoDBConfig.connectURL, connectionOptions);
 
 /**
   * 连接成功
