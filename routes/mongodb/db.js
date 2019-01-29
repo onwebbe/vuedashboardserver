@@ -3,7 +3,8 @@ const logger = require('../../Logger');
 const config = require('config');
 const connectionOptions = {
   user: config.mongoDBConfig.user,
-  pass: config.mongoDBConfig.password
+  pass: config.mongoDBConfig.password,
+  useNewUrlParser: true
 }
 /**
  * 连接
@@ -14,7 +15,7 @@ mongoose.connect(config.mongoDBConfig.connectURL, connectionOptions);
   * 连接成功
   */
 mongoose.connection.on('connected', function () {    
-  logger.info('Mongoose connection open to ' + DB_URL);  
+  logger.info('Mongoose connection open to ' + config.mongoDBConfig.connectURL);  
 });    
 
 /**
