@@ -1,9 +1,25 @@
 var express = require('express');
 var router = express.Router();
+
 var JenkinsJobsSummaryWorker = require('../workers/JenkinsJobsSummaryWorker');
 var GetDashboardConfigWorker = require('../workers/GetDashboardConfigWorker');
+var SaveDashboardConfigWorker = require('../workers/SaveDashboardConfigWorker');
 const logger = require('../../Logger');
 const utils = require('../Utils');
+router.post('/saveDashBoardConfig', function(req, res, next) {
+  logger.info('ROUTER:saveDashBoardConfig');
+  let saveDashboardConfigWorker = new SaveDashboardConfigWorker({
+    'data': JSON.parse(req.body.data)
+  });
+  saveDashboardConfigWorker.start().then( configdata => {
+    if (configdata == null) {
+      res.send(utils.composeJSONReply(false, {}, 'Error when saving dashboard config.'));
+    } else {
+      res.send(utils.composeJSONReply(true, {}, 'Save dashboard config successfully'));
+    }
+    
+  });
+});
 /* GET home page. */
 router.get('/getDashBoardConfig', function(req, res, next) {
   logger.info('ROUTER:getDashBoardConfig');
