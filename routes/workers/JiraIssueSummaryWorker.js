@@ -1,6 +1,7 @@
 const request = require('superagent');
 const logger = require('../../Logger');
 const JiraDB = require('../mongodb/JiraIssueSummaryDB');
+const utils = require('../Utils');
 const cheerio = require('cheerio');
 process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
 
@@ -40,11 +41,8 @@ class JiraIssueSummaryWorker {
   }
   checkIfTodayAlreadyInserted() {
     logger.info('JiraIssueSummaryWorker:checkIfTodayAlreadyInserted:Start');
-    let now = new Date();
-    let today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-    let tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
     return new Promise((resolve, reject) => {
-      JiraDB.find({'date': {'$gte': today}, 'date': {'$lt': tomorrow}}, (err, res) => {
+      JiraDB.find(utils.generateMongoDateCheckObj('date'), (err, res) => {
         logger.info('JiraIssueSummaryWorker:checkIfTodayAlreadyInserted:is Already Inserted:' + (res.length > 0));
         resolve(res.length > 0);
       });
