@@ -4,7 +4,6 @@ var Schema = mongoose.Schema;
 var NewUTCodeCoverage = new Schema({
   date: {
     type: Date,
-    default: Date.now,
     index: true
   },
   codeCoverage: {
