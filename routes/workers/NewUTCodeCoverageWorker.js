@@ -129,7 +129,8 @@ class SonarCrawler {
     return new Promise((resolve, reject) => {
       let saveData = {
         'codeCoverage': self._data.codeCoverage,
-        'codeCoverageRawData': self._data.codeCoverageRawData
+        'codeCoverageRawData': self._data.codeCoverageRawData,
+        'date': new Date()
       };
       let coverageDB = new CoverageDB(saveData);
       coverageDB.save( function (err, res) {

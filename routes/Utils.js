@@ -43,10 +43,10 @@ function generateDateObj(gap) {
   return thisDay;
 }
 function generateMongoDateGap(fieldName, date, dateGap) {
-  if ( date == null ) {
-    date = new Date();
-  }
   let thisDay = date;
+  if ( date == null ) {
+    thisDay = generateDateObj(0);
+  }
   let nextDay = generateDateObj(dateGap);
   let queryObj = {};
   queryObj['$and'] = [];
