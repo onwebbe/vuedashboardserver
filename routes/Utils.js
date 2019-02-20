@@ -31,7 +31,11 @@ function _padFieldLeft(field, length, padCharacter) {
 function generateMongoDateCheckObj(fieldName, date) {
   return generateMongoDateGap(fieldName, date, 1)
 }
-function generateDateObj(gap) {
+/*
+ * genereated mongodb default date string for query or update, using date object will cause utc timezone problem
+ * but the problem not exists when using string
+ */
+function generateDateStr(gap) {
   if (gap == null) {
     gap == 0;
   }
@@ -39,15 +43,15 @@ function generateDateObj(gap) {
   let dateYear = date.getFullYear();
   let dateMonth = date.getMonth();
   let dateDay = date.getDate();
-  let thisDay = new Date(dateYear + '-' + _padFieldLeft(dateMonth + 1, 2, '0') + '-' + _padFieldLeft(dateDay + gap, 2, 0) + 'T00:00:00.000Z');
+  let thisDay = dateYear + '-' + _padFieldLeft(dateMonth + 1, 2, '0') + '-' + _padFieldLeft(dateDay + gap, 2, 0) + 'T00:00:00.000Z';
   return thisDay;
 }
 function generateMongoDateGap(fieldName, date, dateGap) {
   let thisDay = date;
   if ( date == null ) {
-    thisDay = generateDateObj(0);
+    thisDay = generateDateStr(0);
   }
-  let nextDay = generateDateObj(dateGap);
+  let nextDay = generateDateStr(dateGap);
   let queryObj = {};
   queryObj['$and'] = [];
   query1 = {};
@@ -71,5 +75,5 @@ module.exports = {
   composeJSONReply,
   generateMongoDateCheckObj,
   generateMongoDateGap,
-  generateDateObj
+  generateDateStr
 }
