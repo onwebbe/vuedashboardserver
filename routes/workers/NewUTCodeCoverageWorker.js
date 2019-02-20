@@ -116,8 +116,10 @@ class SonarCrawler {
       };
       CoverageDB.updateMany(dateQuery, saveData, {multi: true}, function(err, docs){
         if (err) {
+          console.log('更改失败：' + docs);
           reject();
         } else {
+          console.log('更改成功：' + docs);
           resolve();
         }
         // console.log('更改成功：' + docs);
