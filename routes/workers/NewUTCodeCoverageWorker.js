@@ -25,6 +25,7 @@ class SonarCrawler {
       await this.getNewCodeCoverage();
       await this.getNewCodeDetail();
       await this.saveData();
+      CoverageDB.db.close();
     } catch (e) {
       console.log('error:' + e);
     }
