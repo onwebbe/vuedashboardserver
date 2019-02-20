@@ -19,7 +19,7 @@ class GetNewUTCodeCoverageWorker {
   }
   getCodeCoverageData() {
     return new Promise(async (resolve, reject) => {
-      CoverageDB.find(utils.generateMongoDateGap('date', utils.generateDateObj(1), -4), (err, data) => {
+      CoverageDB.find(utils.generateMongoDateGap('date', utils.generateDateStr(1), -4), (err, data) => {
         if (err) {
           reject(err);
         }
