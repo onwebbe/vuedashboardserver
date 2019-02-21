@@ -61,7 +61,7 @@ class GetQuanlityTestingFailStatusSummaryWorker {
         } 
       })
       .catch(err => {
-          logger.error('GetQuanlityTestingFailStatusSummaryWorker:get job list info error:' + e.message);
+          logger.error('GetQuanlityTestingFailStatusSummaryWorker:get job list info error:' + err.message);
           reject(err.message);
       })
     });
