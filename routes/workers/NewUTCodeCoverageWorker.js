@@ -115,7 +115,7 @@ class SonarCrawler {
         'codeCoverageRawData': self._data.codeCoverageRawData,
         'date': new Date()
       };
-      CoverageDB.updateMany(dateQuery, saveData, {multi: true}, function(err, docs){
+      CoverageDB.updateMany(dateQuery, saveData, {multi: true, upsert: false}, function(err, docs){
         if (err) {
           console.log('更改失败：' + docs);
           reject();
