@@ -5,6 +5,7 @@ var JenkinsJobsSummaryWorker = require('../workers/JenkinsJobsSummaryWorker');
 var GetDashboardConfigWorker = require('../workers/GetDashboardConfigWorker');
 var SaveDashboardConfigWorker = require('../workers/SaveDashboardConfigWorker');
 var GetNewUTCodeCoverageWorker = require('../workers/GetNewUTCodeCoverageWorker');
+var GetQuanlityTestingFailStatusSummaryWorker = require('../workers/GetQuanlityTestingFailStatusSummaryWorker');
 const logger = require('../../Logger');
 const utils = require('../Utils');
 router.post('/saveDashBoardConfig', function(req, res, next) {
@@ -78,6 +79,13 @@ router.get('/fetchJenkinsJobSummary', function(req, res, next) {
 });
 router.get('/getNewUTCodeCoverage', function(req, res, next) {
   let getNewUTCodeCoverageWorker = new GetNewUTCodeCoverageWorker();
+  getNewUTCodeCoverageWorker.init();
+  getNewUTCodeCoverageWorker.start().then(function (data) {
+    res.send(utils.composeJSONReply(true, data, ''));
+  })
+});
+router.get('/getQuanlityTestingFailStatusSummary', function(req, res, next) {
+  let getNewUTCodeCoverageWorker = new GetQuanlityTestingFailStatusSummaryWorker();
   getNewUTCodeCoverageWorker.init();
   getNewUTCodeCoverageWorker.start().then(function (data) {
     res.send(utils.composeJSONReply(true, data, ''));
