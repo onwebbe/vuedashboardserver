@@ -156,7 +156,7 @@ class JenkinsJobsSummaryWorker {
           
         })
         .catch(err => {
-            logger.error('JenkinsJobsSummaryWorker:get job list info error:' + e.message);
+            logger.error('JenkinsJobsSummaryWorker:get job list info error:' + err.message);
           reject(err.message);
         })
       });
