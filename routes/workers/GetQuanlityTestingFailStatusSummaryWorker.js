@@ -68,7 +68,7 @@ class GetQuanlityTestingFailStatusSummaryWorker {
   }
   _retriveJobCaseSummary(job) {
     let jobName = job.job_name;
-    let buildDetailURL = this._config.baseURL + '/api/jobanalysis/' + jobName + '/failed/5'
+    let buildDetailURL = this._config.baseURL + '/api/jobanalysis/' + jobName + '/failed/20'
     logger.info('GetQuanlityTestingFailStatusSummaryWorker:_retriveJobCaseSummary:Get data from:' + buildDetailURL);
     return new Promise((resolve, reject) => {
       request.get(buildDetailURL).then(res => {
