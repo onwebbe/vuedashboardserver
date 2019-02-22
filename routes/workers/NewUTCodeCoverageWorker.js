@@ -79,7 +79,7 @@ class SonarCrawler {
       console.log('url2:' + url);
       request.get(url).then(res => {
         // res.body, res.headers, res.status
-        console.log(res.body);
+        // console.log(res.body);
         resolve();
       })
       .catch(err => {
@@ -92,12 +92,12 @@ class SonarCrawler {
     let self = this;
     return new Promise(async (resolve, reject) => {
       try {
-        let isRequireInsert = await self.checkIfRequireToInsert();
-        console.log('checkIfRequireToInsert:' + isRequireInsert);
-        if (isRequireInsert) {
-          await self.insertCodeCoverageData();
+        let foundObjIDs = await self.checkIfRequireToInsert();
+        console.log('checkIfRequireToInsert:' + foundObjIDs.length + ':' + foundObjIDs);
+        if (foundObjIDs != null) {
+          await self.updateCodeCoverageData(foundObjIDs);
         } else {
-          await self.updateCodeCoverageData();
+          await self.insertCodeCoverageData();
         }
         resolve();
       } catch (e) {
@@ -106,21 +106,20 @@ class SonarCrawler {
       }
     });
   }
-  updateCodeCoverageData() {
+  updateCodeCoverageData(objectIds) {
     let self = this;
     return new Promise((resolve, reject) => {
-      let dateQuery = utils.generateMongoDateCheckObj('date');
       let saveData = {
         'codeCoverage': self._data.codeCoverage,
         'codeCoverageRawData': self._data.codeCoverageRawData,
         'date': new Date()
       };
-      CoverageDB.updateMany(dateQuery, saveData, {multi: true, upsert: false}, function(err, docs){
+      CoverageDB.updateMany({_id: {$in: objectIds}}, saveData, {multi: true, upsert: false}, function(err, docs){
         if (err) {
-          console.log('更改失败：' + docs);
+          console.log('更改失败：' + JSON.stringify(docs));
           reject();
         } else {
-          console.log('更改成功：' + docs);
+          console.log('更改成功：' + JSON.stringify(docs));
           resolve();
         }
         // console.log('更改成功：' + docs);
@@ -147,20 +146,34 @@ class SonarCrawler {
     });
   }
   checkIfRequireToInsert() {
-    let dateQuery = utils.generateMongoDateCheckObj('date');
+    // let dateQuery = utils.generateMongoDateCheckObj('date');
+    let dateQuery = utils.generateMongoDateGap('date', utils.generateDateStr(2), -2)
     return new Promise((resolve, reject) => {
       CoverageDB.find(dateQuery, (err, data) => {
         if (err) {
           reject(err);
         }
         if (data != null) {
-          if (data.length > 0) {
-            resolve(false);
+          let isFound = null;
+          let today = new Date();
+          for (let i = 0; i < data.length; i++) {
+            let dataDate = data[i].date;
+            if (dataDate.getFullYear() == today.getFullYear() &&
+                  dataDate.getMonth() == today.getMonth() &&
+                  dataDate.getDate() == today.getDate() ) {
+              if (isFound == null) {
+                isFound = [];
+              }
+              isFound.push(data[i]._id);
+            }
+          }
+          if (isFound) {
+            resolve(isFound);
           } else {
-            resolve(true);
+            resolve(null);
           }
         } else {
-          resolve(true);
+          resolve(null);
         }
       });
     });
