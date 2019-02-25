@@ -93,7 +93,7 @@ class SonarCrawler {
     return new Promise(async (resolve, reject) => {
       try {
         let foundObjIDs = await self.checkIfRequireToInsert();
-        console.log('checkIfRequireToInsert:' + foundObjIDs.length + ':' + foundObjIDs);
+        console.log('checkIfRequireToInsert:' + foundObjIDs);
         if (foundObjIDs != null) {
           await self.updateCodeCoverageData(foundObjIDs);
         } else {
