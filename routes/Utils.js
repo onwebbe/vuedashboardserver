@@ -39,11 +39,13 @@ function generateDateStr(gap) {
   if (gap == null) {
     gap == 0;
   }
+  var oneDayTime = 60 * 60 * 24 * 1000;
   let date = new Date();
+  date = new Date(date.getTime() + (gap * oneDayTime));
   let dateYear = date.getFullYear();
   let dateMonth = date.getMonth();
   let dateDay = date.getDate();
-  let thisDay = dateYear + '-' + _padFieldLeft(dateMonth + 1, 2, '0') + '-' + _padFieldLeft(dateDay + gap, 2, 0) + 'T00:00:00.000Z';
+  let thisDay = dateYear + '-' + _padFieldLeft(dateMonth + 1, 2, '0') + '-' + _padFieldLeft(dateDay, 2, 0) + 'T00:00:00.000Z';
   return thisDay;
 }
 function generateMongoDateGap(fieldName, date, dateGap) {
