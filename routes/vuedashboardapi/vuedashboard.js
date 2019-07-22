@@ -6,6 +6,8 @@ var GetDashboardConfigWorker = require('../workers/GetDashboardConfigWorker');
 var SaveDashboardConfigWorker = require('../workers/SaveDashboardConfigWorker');
 var GetNewUTCodeCoverageWorker = require('../workers/GetNewUTCodeCoverageWorker');
 var GetQuanlityTestingFailStatusSummaryWorker = require('../workers/GetQuanlityTestingFailStatusSummaryWorker');
+var ComponentPiplelineRunStatusWorker = require('../workers/ComponentPiplelineRunStatusWorker');
+
 const logger = require('../../Logger');
 const utils = require('../Utils');
 router.post('/saveDashBoardConfig', function(req, res, next) {
@@ -91,5 +93,11 @@ router.get('/getQuanlityTestingFailStatusSummary', function(req, res, next) {
     res.send(utils.composeJSONReply(true, data, ''));
   })
 });
-
+router.get('/getComponentPiplelineRunStatusWorker', function(req, res, next) {
+  let getComponentPiplelineRunStatusWorker = new ComponentPiplelineRunStatusWorker();
+  getComponentPiplelineRunStatusWorker.init();
+  getComponentPiplelineRunStatusWorker.start().then(function (data) {
+    res.send(utils.composeJSONReply(true, data, ''));
+  })
+});
 module.exports = router;
