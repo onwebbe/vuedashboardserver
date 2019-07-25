@@ -11,6 +11,9 @@ class SonarCrawler {
         baseURL: 'https://sf-sonar.devprod.sap.corp/api/measures/component'
       };
     }
+    if (!config.baseURL) {
+      config.baseURL = 'https://sf-sonar.devprod.sap.corp/api/measures/component';
+    }
     if (config.module == null) {
       config.module = 'au-cdp';
     }
@@ -179,7 +182,12 @@ class SonarCrawler {
     });
   }
 }
-let sonarCrawler = new SonarCrawler();
-sonarCrawler.init();
-sonarCrawler.start();
+let sonarCrawlerCDP = new SonarCrawler();
+sonarCrawlerCDP.init();
+sonarCrawlerCDP.start();
+let sonarCrawlerPLM = new SonarCrawler();
+sonarCrawlerPLM.init({
+  module: 'au-leonardoml'
+});
+sonarCrawlerPLM.start();
 // https://sf-sonar.devprod.sap.corp/api/measures/component?componentKey=au-cdp&metricKeys=new_coverage
