@@ -153,9 +153,13 @@ class SonarCrawler {
   }
   checkIfRequireToInsert() {
     // let dateQuery = utils.generateMongoDateCheckObj('date');
-    let dateQuery = utils.generateMongoDateGap('date', utils.generateDateStr(2), -2)
+    let dateQuery = utils.generateMongoDateGap('date', utils.generateDateStr(2), -2);
+    var newQuery = {'$and': [
+      dateQuery, {
+        'codeCoverageRawData.component.key': this._config.module
+    }]};
     return new Promise((resolve, reject) => {
-      CoverageDB.find(dateQuery, (err, data) => {
+      CoverageDB.find(newQuery, (err, data) => {
         if (err) {
           reject(err);
         }
