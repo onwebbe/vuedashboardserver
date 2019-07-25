@@ -81,7 +81,7 @@ router.get('/fetchJenkinsJobSummary', function(req, res, next) {
 });
 router.get('/getNewUTCodeCoverage', function(req, res, next) {
   let getNewUTCodeCoverageWorker = new GetNewUTCodeCoverageWorker();
-  getNewUTCodeCoverageWorker.init();
+  getNewUTCodeCoverageWorker.init(req);
   getNewUTCodeCoverageWorker.start().then(function (data) {
     res.send(utils.composeJSONReply(true, data, ''));
   })
