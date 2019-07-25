@@ -23,15 +23,18 @@ class SonarCrawler {
     this._config = config;
     this._inited = true;
   }
-  async start() {
-    try {
-      await this.getNewCodeCoverage();
-      await this.getNewCodeDetail();
-      await this.saveData();
-      CoverageDB.db.close();
-    } catch (e) {
-      console.log('error:' + e);
-    }
+  start() {
+    return new Promise(async(resolve, reject) => {
+      try {
+        await this.getNewCodeCoverage();
+        await this.getNewCodeDetail();
+        await this.saveData();
+        resolve();
+      } catch (e) {
+        console.log('error:' + e);
+        reject();
+      }
+    });
   }
   getNewCodeCoverage() {
     let self = this;
@@ -184,10 +187,20 @@ class SonarCrawler {
 }
 let sonarCrawlerCDP = new SonarCrawler();
 sonarCrawlerCDP.init();
-sonarCrawlerCDP.start();
+
 let sonarCrawlerPLM = new SonarCrawler();
 sonarCrawlerPLM.init({
   module: 'au-leonardoml'
 });
-sonarCrawlerPLM.start();
+
+async function startAll() {
+  try {
+    await sonarCrawlerCDP.start();
+  } catch (e) {}
+  try {
+    await sonarCrawlerPLM.start();
+  } catch (e) {}
+  CoverageDB.db.close();
+}
+startAll();
 // https://sf-sonar.devprod.sap.corp/api/measures/component?componentKey=au-cdp&metricKeys=new_coverage
