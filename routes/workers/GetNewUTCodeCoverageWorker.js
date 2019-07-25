@@ -1,6 +1,6 @@
 const CoverageDB = require('../mongodb/NewUTCodeCoverageDB');
 const utils = require('../Utils');
-
+const logger = require('../../Logger');
 class GetNewUTCodeCoverageWorker {
   init(req, config) {
     let parameters = req.query;
@@ -36,6 +36,7 @@ class GetNewUTCodeCoverageWorker {
       query, {
         'codeCoverageRawData.component.key': self.theModule
     }]};
+    logger.info('GetNewUTCodeCoverageWorker:getCodeCoverageData:query DB:' + JSON.stringify(newQuery));
     return new Promise(async (resolve, reject) => {
       CoverageDB.find(newQuery, (err, data) => {
         if (err) {
