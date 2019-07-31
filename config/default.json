@@ -55,32 +55,26 @@
           ], 
           "level": "DEBUG"
         },
-        "production": {
-          "default": { 
-            "appenders": [
-              "fileOutputStandard",
-              "out"
-            ], 
-            "level": "INFO"
-          }
+        "production": { 
+          "appenders": [
+            "fileOutputStandard",
+            "out"
+          ], 
+          "level": "INFO"
         },
-        "defaultapi": {
-          "default": { 
-            "appenders": [
-              "apiFileOutputStandard",
-              "out"
-            ], 
-            "level": "DEBUG"
-          }
+        "defaultapi": { 
+          "appenders": [
+            "apiFileOutputStandard",
+            "out"
+          ], 
+          "level": "DEBUG"
         },
-        "productionapi": {
-          "default": { 
-            "appenders": [
-              "apiFileOutputStandard",
-              "out"
-            ], 
-            "level": "INFO"
-          }
+        "productionapi": { 
+          "appenders": [
+            "apiFileOutputStandard",
+            "out"
+          ], 
+          "level": "INFO"
         }
       }
     }

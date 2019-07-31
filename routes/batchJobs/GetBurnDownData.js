@@ -3,6 +3,7 @@ const logger = require('../../Logger');
 const BurnDownDBDataModels = require('../mongodb/BurnDownChartDB');
 const BurnDownChartModel = BurnDownDBDataModels.BurnDownChartModel;
 const BurnDownChartStoryModel = BurnDownDBDataModels.BurnDownChartStoryModel;
+const ConfigDB = require('../mongodb/DashboardConfigDB');
 const utils = require('../Utils');
 process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
 
@@ -186,14 +187,35 @@ class GetBurnDownDataCrawler {
     });
   }
 }
-let getBurnDownDataCrawler = new GetBurnDownDataCrawler();
-getBurnDownDataCrawler.init();
 
-async function startAll() {
-  try {
-    await getBurnDownDataCrawler.start();
-  } catch (e) {}
-  BurnDownChartModel.db.close();
-  BurnDownChartStoryModel.db.close();
+
+function getDashboardConfig() {
+  logger.info('GetDashboardConfigWorker:getDashboardConfig:Start get Data');
+  return new Promise( (resolve, reject) => {
+    ConfigDB.find({}).sort({date: -1}).limit(1).exec(async(err, res) => {
+      if (err) {
+        logger.error('GetDashboardConfigWorker:getDashboardConfig:get data Failed.');
+        reject(err);
+      } else {
+
+        let chartConfig = res[0]._doc.burndownchartconfig;
+        let getBurnDownDataCrawler = new GetBurnDownDataCrawler();
+        if (chartConfig) {
+          getBurnDownDataCrawler.init(chartConfig);
+        } else {
+          getBurnDownDataCrawler.init();
+        }
+        
+
+        try {
+          await getBurnDownDataCrawler.start();
+        } catch (e) {}
+        BurnDownChartModel.db.close();
+        BurnDownChartStoryModel.db.close();
+        ConfigDB.db.close();
+      }
+    });
+  });
 }
-startAll();
+
+getDashboardConfig();
