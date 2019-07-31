@@ -35,7 +35,10 @@ class GetBurnDownDataCrawler {
       // customfield_10002: ticket priority
       config.baseQuery = 'project in ("Career Development Plan (CDP)") AND (fixVersion in (<releasename1>) OR labels in (<releasename2>, <releasename3>)) AND issuetype = Story AND (status not in (Verified, Invalid, Closed) AND sprint is EMPTY OR sprint = "<sprintname>") ORDER BY Rank ASC';
     }
-    
+    if (config.token == null) {
+      // customfield_10002: ticket priority
+      config.token = 'STMyNjQzMjpXYXJtZXIwOTg3xxx';
+    }
     this._config = config;
     this._inited = true;
     logger.info('GetBurnDownData:GetBurnDownDataCrawler:init:config data:\n' + JSON.stringify(this._config));
@@ -88,7 +91,7 @@ class GetBurnDownDataCrawler {
     logger.info('GetBurnDownData:GetBurnDownDataCrawler:getBIPageData:getDataQuery:' + queryURL);
     return new Promise(async(resolve, reject) => {
       request.get(queryURL)
-      .set('Authorization', 'Basic STMyNjQzMjpXYXJtZXIwOTg3')
+      .set('Authorization', 'Basic ' + this._config.token)
       .set('Accept', 'application/json')
       .end(async(err, res) => {
         await BurnDownChartStoryModel.removeStoryByChartId(self.chartId);
@@ -96,7 +99,7 @@ class GetBurnDownDataCrawler {
         // console.log(res.body);
         // console.log(JSON.stringify(res.body));
         resolve();
-    });
+      });
     });
   }
   processBIData(rawdata) {
@@ -197,16 +200,13 @@ function getDashboardConfig() {
         logger.error('GetDashboardConfigWorker:getDashboardConfig:get data Failed.');
         reject(err);
       } else {
-
-        let chartConfig = res[0]._doc.burndownchartconfig;
+        let chartConfig = res[0].toJSON().burndownchartconfig;
         let getBurnDownDataCrawler = new GetBurnDownDataCrawler();
         if (chartConfig) {
           getBurnDownDataCrawler.init(chartConfig);
         } else {
           getBurnDownDataCrawler.init();
         }
-        
-
         try {
           await getBurnDownDataCrawler.start();
         } catch (e) {}
