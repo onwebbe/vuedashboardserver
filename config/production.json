@@ -3,5 +3,10 @@
     "connectURL"  : "mongodb://localhost:27007/vuedashboardtiles",
     "user"        : "vuedashboard",
     "password"    : "tiles"
+  },
+  "loggerConfig": {
+    "usage": {
+      "usingCategory": "production"
+    }
   }
 }

@@ -39,6 +39,12 @@
           "filename": "logs/access.log", 
           "maxLogSize": 1024000,
           "backups": 3
+        },
+        "apiFileOutputStandard": {
+          "type": "file",
+          "filename": "logs/api_access.log", 
+          "maxLogSize": 1024000,
+          "backups": 3
         }
       },
       "categories": {
@@ -48,6 +54,33 @@
             "out"
           ], 
           "level": "DEBUG"
+        },
+        "production": {
+          "default": { 
+            "appenders": [
+              "fileOutputStandard",
+              "out"
+            ], 
+            "level": "INFO"
+          }
+        },
+        "defaultapi": {
+          "default": { 
+            "appenders": [
+              "apiFileOutputStandard",
+              "out"
+            ], 
+            "level": "DEBUG"
+          }
+        },
+        "productionapi": {
+          "default": { 
+            "appenders": [
+              "apiFileOutputStandard",
+              "out"
+            ], 
+            "level": "INFO"
+          }
         }
       }
     }

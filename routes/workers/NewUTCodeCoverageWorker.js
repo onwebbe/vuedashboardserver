@@ -155,7 +155,7 @@ class SonarCrawler {
     // let dateQuery = utils.generateMongoDateCheckObj('date');
     var self = this;
     let dateQuery = utils.generateMongoDateGap('date', utils.generateDateStr(2), -2);
-    var newQuery = {'$and': [
+    let newQuery = {'$and': [
       dateQuery, {
         'codeCoverageRawData.component.key': self._config.module
     }]};
