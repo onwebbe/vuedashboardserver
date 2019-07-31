@@ -30,7 +30,7 @@ router.get('/getDashBoardConfig', function(req, res, next) {
   let getDashboardConfigWorker = new GetDashboardConfigWorker();
   getDashboardConfigWorker.init();
   getDashboardConfigWorker.start().then( configdata => {
-    res.send(utils.composeJSONReply(true, configdata.dashboardConfig, ''));
+    res.send(utils.composeJSONReply(true, configdata, ''));
   });
   // let configData = {
   //   success: true,

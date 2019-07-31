@@ -10,6 +10,9 @@ var DashboardConfigSchema = new Schema({
   },
   dashboardConfig: {
     type: Map
+  },
+  burndownchartconfig: {
+    type: Map
   }
 });
 
