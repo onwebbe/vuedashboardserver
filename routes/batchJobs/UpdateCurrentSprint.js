@@ -6,8 +6,11 @@ class UpdateCurrentSprint {
     return new Promise(async (resolve, reject) => {
       let allSprints = await jiraUtils.listAllSprints();
       let activeSprint = allSprints.filter((sprintItem) => {
-        if (sprintItem.status != 'CLOSED' && sprintItem.name == 'CDP_B1908_Sprint2') {
+        // if (sprintItem.state != 'CLOSED' && sprintItem.name == 'CDP_B1908_Sprint2') {
+        if (sprintItem.state != 'CLOSED') {
           return true;
+        } else {
+          return false;
         }
       });
       if (activeSprint.length === 1) {
@@ -31,11 +34,31 @@ class UpdateCurrentSprint {
           })
         });
       } else {
-        reject();
+        ConfigDB.find({}, (err, res) => {
+          if (err) {
+            reject(err);
+          }
+          let currentConfig = res[0].toJSON();
+          let id = res[0]._id;
+          let burndownchartconfig = currentConfig.burndownchartconfig;
+          burndownchartconfig.release = '';
+          burndownchartconfig.sprint = '';
+          ConfigDB.update({_id: id}, {$set: {'burndownchartconfig': burndownchartconfig}}, (error, res) => {
+            if (error) {
+              reject(error);
+              return;
+            }
+            resolve(res);
+          })
+        });
       }
     });
   }
 }
 
-let t = new UpdateCurrentSprint();
-t.start();
+async function startProcess() {
+  let t = new UpdateCurrentSprint();
+  await t.start();
+  ConfigDB.db.close();
+}
+startProcess();

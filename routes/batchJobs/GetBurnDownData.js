@@ -94,6 +94,7 @@ class GetBurnDownDataCrawler {
       .set('Authorization', 'Basic ' + this._config.token)
       .set('Accept', 'application/json')
       .end(async(err, res) => {
+        logger.info('GetBurnDownData:GetBurnDownDataCrawler:getBIPageData:get Data from Jira');
         await BurnDownChartStoryModel.removeStoryByChartId(self.chartId);
         await self.processBIData(res.body);
         // console.log(res.body);
@@ -201,6 +202,11 @@ function getDashboardConfig() {
         reject(err);
       } else {
         let chartConfig = res[0].toJSON().burndownchartconfig;
+        if (chartConfig == null || chartConfig.release === '' || chartConfig.release == null
+          || chartConfig.sprint === '' || chartConfig.sprint == null) {
+            reject('Current no active sprint, not process');
+            return;
+        }
         let getBurnDownDataCrawler = new GetBurnDownDataCrawler();
         if (chartConfig) {
           getBurnDownDataCrawler.init(chartConfig);
@@ -209,13 +215,24 @@ function getDashboardConfig() {
         }
         try {
           await getBurnDownDataCrawler.start();
-        } catch (e) {}
-        BurnDownChartModel.db.close();
-        BurnDownChartStoryModel.db.close();
-        ConfigDB.db.close();
+        } catch (e) {
+          reject(e);
+        }
+        resolve()
       }
     });
   });
 }
 
-getDashboardConfig();
+async function startProcess() {
+  try {
+    await getDashboardConfig();
+  } catch (e) {
+    logger.error('GetBurnDownData:error when start:' + e);
+  }
+  BurnDownChartModel.db.close();
+  BurnDownChartStoryModel.db.close();
+  ConfigDB.db.close();
+}
+
+startProcess();
