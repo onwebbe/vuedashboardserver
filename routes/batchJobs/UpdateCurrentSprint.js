@@ -25,6 +25,8 @@ class UpdateCurrentSprint {
           let releaseName = activeSprintName.split('_')[1].toLowerCase();
           burndownchartconfig.release = releaseName;
           burndownchartconfig.sprint = activeSprintName;
+          burndownchartconfig.latestRelease = releaseName;
+          burndownchartconfig.latestSprint = activeSprintName;
           ConfigDB.update({_id: id}, {$set: {'burndownchartconfig': burndownchartconfig}}, (error, res) => {
             if (error) {
               reject(error);
@@ -41,6 +43,10 @@ class UpdateCurrentSprint {
           let currentConfig = res[0].toJSON();
           let id = res[0]._id;
           let burndownchartconfig = currentConfig.burndownchartconfig;
+          if (burndownchartconfig.release === '' && burndownchartconfig.sprint === '') {
+            resolve(burndownchartconfig);
+            return;
+          }
           burndownchartconfig.release = '';
           burndownchartconfig.sprint = '';
           ConfigDB.update({_id: id}, {$set: {'burndownchartconfig': burndownchartconfig}}, (error, res) => {

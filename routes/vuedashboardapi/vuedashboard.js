@@ -100,4 +100,13 @@ router.get('/getComponentPiplelineRunStatusWorker', function(req, res, next) {
     res.send(utils.composeJSONReply(true, data, ''));
   })
 });
+
+router.get('/getBurnDownChartWorker', function(req, res, next) {
+  let getBurnDownChartWorker = new GetBurnDownChartWorker();
+  getBurnDownChartWorker.init();
+  getBurnDownChartWorker.start().then(function (data) {
+    res.send(utils.composeJSONReply(true, data, ''));
+  })
+});
+
 module.exports = router;

@@ -27,7 +27,8 @@
   },
   "loggerConfig": {
     "usage": {
-      "usingCategory": "default"
+      "usingCategory": "default",
+      "usingAPICategory": "defaultapi"
     },
     "config": {
       "appenders": {
