@@ -1,8 +1,10 @@
 const request = require('superagent');
+const moment = require('moment');
 const logger = require('../../Logger');
 const BurnDownDBDataModels = require('../mongodb/BurnDownChartDB');
 const BurnDownChartModel = BurnDownDBDataModels.BurnDownChartModel;
 const BurnDownChartStoryModel = BurnDownDBDataModels.BurnDownChartStoryModel;
+const BurnDownChartSprintModel = BurnDownDBDataModels.BurnDownChartSprintModel;
 const ConfigDB = require('../mongodb/DashboardConfigDB');
 const utils = require('../Utils');
 process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
@@ -27,6 +29,14 @@ class GetBurnDownDataCrawler {
     if (config.sprint == null) {
         config.sprint = 'CDP_B1908_Sprint1';
     }
+
+    if (config.sprintid == null) {
+        config.sprintid = '';
+    }
+    if (config.dashboardid == null) {
+      config.dashboardid = '1298';
+    }
+
     if (config.fields == null) {
       // customfield_10002: ticket priority
       config.fields = 'issuetype,self,key,assignee,components,reporter,project,summary,customfield_10002,fixVersions,status,subtasks,aggregatetimeoriginalestimate,aggregatetimespent,aggregateprogress';
@@ -38,6 +48,9 @@ class GetBurnDownDataCrawler {
     if (config.token == null) {
       // customfield_10002: ticket priority
       config.token = 'STMyNjQzMjpXYXJtZXIwOTg3xxx';
+    }
+    if (config.getSpringInfoUrl == null) {
+      config.getSpringInfoUrl = 'https://jira.successfactors.com/rest/greenhopper/1.0/rapid/charts/sprintreport?rapidViewId=<dashboardid>&sprintId=<sprintid>';
     }
     this._config = config;
     this._inited = true;
@@ -78,8 +91,71 @@ class GetBurnDownDataCrawler {
     return new Promise(async(resolve, reject) => {
       let chartId = await this.createUpdateChart();
       this.chartId = chartId;
-      await this.getBIPageData(queryURL, params);
+      let sprintData = await self.getCurrentSprint();
+      await self.getBIPageData(queryURL, params);
       resolve();
+    });
+  }
+  getCurrentSprint() {
+    let self = this;
+    let query = this._config.getSpringInfoUrl;
+    query = query.replace('<dashboardid>', this._config.dashboardid);
+    query = query.replace('<sprintid>', this._config.sprintid);
+    return new Promise(async(resolve, reject) => {
+      request.get(query)
+      .set('Authorization', 'Basic ' + this._config.token)
+      .set('Accept', 'application/json')
+      .end(async(err, res) => {
+        logger.info('GetBurnDownData:GetBurnDownDataCrawler:getCurrentSprint:get data url');
+        let savedSprintData = await self.saveSprintData(res.body);
+        // console.log(res.body);
+        // console.log(JSON.stringify(res.body));
+        resolve(savedSprintData);
+      });
+    });
+  }
+  saveSprintData(sprintReportData) {
+    let self = this;
+    let chartid = this.chartid;
+    return new Promise(async(resolve, reject) => {
+      let startDateStr = sprintReportData.sprint.startDate;
+      let endDateStr = sprintReportData.sprint.endDate;
+      let startDate = moment(startDateStr, 'DD/MMM/YY hh:mm a');
+      let endDate = moment(endDateStr, 'DD/MMM/YY hh:mm a');
+      let sprintData = {
+        chartid: chartid,
+        sprintid: self._config.sprintid,
+        sprintName: self._config.sprint,
+        state: 'ACTIVE',
+        startDate: startDate.toDate().getTime(),
+        endDate: endDate.toDate().getTime(),
+        daysRemaining: sprintReportData.sprint.daysRemaining,
+        sprintData: sprintReportData
+      }
+      await this.deleteSprintData();
+      let sprintDataModel = new BurnDownChartSprintModel(sprintData);
+      sprintDataModel.save((err, res) => {
+        if (err) {
+          logger.error('GetBurnDownData:GetBurnDownDataCrawler:saveSprintData:save sprint data error');
+          reject(err);
+          return;
+        }
+        logger.info('GetBurnDownData:GetBurnDownDataCrawler:saveSprintData:save sprint data successful');
+        resolve(res.toJSON());
+      });
+    });
+  }
+  deleteSprintData() {
+    return new Promise(async(resolve, reject) => {
+      BurnDownChartSprintModel.remove({chartid: this.chartid}, (err, res) => {
+        if (err) {
+          logger.error('GetBurnDownData:GetBurnDownDataCrawler:deleteSprintData:delete sprint data error');
+          reject(err);
+          return;
+        }
+        logger.info('GetBurnDownData:GetBurnDownDataCrawler:deleteSprintData:delete sprint data successful');
+        resolve();
+      });
     });
   }
   async getBIPageData(url, param, startIndex) {

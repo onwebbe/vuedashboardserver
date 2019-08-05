@@ -96,6 +96,10 @@ class GetBurnDownChartWorker {
     });
   }
 }
+// let x = new GetBurnDownChartWorker();
+// let a = new Date('2019-08-05');
+// let b = new Date('2019-08-16');
+// console.log(x.calculateDay(a, b));
 // let a = new GetNewUTCodeCoverageWorker();
 // a.init();
 // a.start();

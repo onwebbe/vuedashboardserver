@@ -20,5 +20,8 @@
     "qs": "^6.6.0",
     "request": "^2.88.0",
     "superagent": "^4.1.0"
+  },
+  "devDependencies": {
+    "moment": "^2.24.0"
   }
 }

@@ -100,10 +100,24 @@ function generateMongoDateGapISODate(fieldName, date, dateGap) {
   queryObj['$and'].push(query2);
   return queryObj;
 }
+
+function calculateDay(start, end) {
+  let startTime = start.getTime();
+  let endTime = end.getTime();
+  let totalDay = 1;
+  for (let i = startTime; i < endTime; i += (60 * 60 * 24 * 1000)) {
+    let currentDate = new Date(i);
+    if (currentDate.getDay() != 0 && currentDate.getDay() != 6) {
+      totalDay++;
+    }
+  }
+  return totalDay;
+}
 module.exports = {
   composeJSONReply,
   generateMongoDateCheckObj,
   generateMongoDateGap,
   generateDateStr,
-  generateMongoDateGapISODate
+  generateMongoDateGapISODate,
+  calculateDay
 }

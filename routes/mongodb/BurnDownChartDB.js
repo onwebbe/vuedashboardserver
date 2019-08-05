@@ -68,4 +68,16 @@ BurnDownChartStoryModel.removeStoryByChartId = function (chartId) {
   });
 }
 
-module.exports = {BurnDownChartModel, BurnDownChartStoryModel};
+var BurnDownChartSprint = new Schema({
+  chartid: {type: mongoose.Schema.Types.ObjectId, ref: 'BurnDownChart'},
+  sprintid: String,
+  sprintName: String,
+  state: String,
+  startDate: String,
+  endDate: String,
+  daysRemaining: Number,
+  sprintData: Map
+});
+var BurnDownChartSprintModel = mongoose.model('BurnDownChartSprint', BurnDownChartSprint);
+
+module.exports = {BurnDownChartModel, BurnDownChartStoryModel, BurnDownChartSprintModel};
