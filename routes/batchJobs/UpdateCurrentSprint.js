@@ -6,8 +6,8 @@ class UpdateCurrentSprint {
     return new Promise(async (resolve, reject) => {
       let allSprints = await jiraUtils.listAllSprints();
       let activeSprint = allSprints.filter((sprintItem) => {
-        if (sprintItem.name == 'CDP_B1908_Sprint2') {
-        //if (sprintItem.state === 'ACTIVE') {
+        // if (sprintItem.state != 'CLOSED' && sprintItem.name == 'CDP_B1908_Sprint2') {
+        if (sprintItem.state === 'ACTIVE') {
           return true;
         } else {
           return false;
@@ -38,6 +38,7 @@ class UpdateCurrentSprint {
         });
       } else {
         ConfigDB.find({}, (err, res) => {
+          if (err) {
             reject(err);
           }
           let currentConfig = res[0].toJSON();
