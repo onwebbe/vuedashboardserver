@@ -10,12 +10,15 @@ class GetBurnDownChartWorker {
     this._inited = true;
   }
   async start() {
+    logger.info('GetBurnDownChartWorker:start:start process');
     try {
       let configData = await this.getConfig();
+      logger.info('GetBurnDownChartWorker:start:get config:' + JSON.stringify(configData));
       let releaseID = configData.burndownchartconfig.latestRelease;
       let sprintID = configData.burndownchartconfig.latestSprint;
       let moduleName = configData.burndownchartconfig.module;
       let responseData = await this.getChartData(moduleName, releaseID, sprintID);
+      logger.info('GetBurnDownChartWorker:start:get chart dat:' + JSON.stringify(responseData));
       return responseData;
     } catch (e) {
       console.log('error:' + e);
@@ -24,6 +27,7 @@ class GetBurnDownChartWorker {
   }
   getChartData(moduleName, release, sprint) {
     let self = this;
+    logger.info('GetBurnDownChartWorker:getChartData:start to get chart data:moduleName:' + moduleName + ', release:' + release + ', sprint' + sprint);
     return new Promise(async (resolve, reject) => {
       BurnDownChartModel.find({
         moduleName: moduleName,
