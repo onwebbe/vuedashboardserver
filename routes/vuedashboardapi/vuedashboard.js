@@ -7,6 +7,7 @@ var SaveDashboardConfigWorker = require('../workers/SaveDashboardConfigWorker');
 var GetNewUTCodeCoverageWorker = require('../workers/GetNewUTCodeCoverageWorker');
 var GetQuanlityTestingFailStatusSummaryWorker = require('../workers/GetQuanlityTestingFailStatusSummaryWorker');
 var ComponentPiplelineRunStatusWorker = require('../workers/ComponentPiplelineRunStatusWorker');
+var GetBurnDownChartWorker = require('../workers/GetBurnDownChartWorker');
 
 const logger = require('../../Logger');
 const utils = require('../Utils');

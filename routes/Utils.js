@@ -1,3 +1,4 @@
+const moment = require('moment');
 function composeJSONReply(isSuccess, response, message) {
   if (message == null) {
     message = '';
@@ -102,10 +103,10 @@ function generateMongoDateGapISODate(fieldName, date, dateGap) {
 }
 
 function calculateDay(start, end) {
-  let startTime = start.getTime();
-  let endTime = end.getTime();
-  let totalDay = 1;
-  for (let i = startTime; i < endTime; i += (60 * 60 * 24 * 1000)) {
+  let startTime = moment(start).startOf('day');
+  let endTime = moment(end).startOf('day');
+  let totalDay = 0;
+  for (let i = startTime.toDate().getTime(); i <= endTime.toDate().getTime(); i += (60 * 60 * 24 * 1000)) {
     let currentDate = new Date(i);
     if (currentDate.getDay() != 0 && currentDate.getDay() != 6) {
       totalDay++;
