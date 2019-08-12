@@ -141,7 +141,7 @@ class GetBurnDownDataCrawler {
           return;
         }
         logger.info('GetBurnDownData:GetBurnDownDataCrawler:saveSprintData:save sprint data successful');
-        logger.info('GetBurnDownData:GetBurnDownDataCrawler:saveSprintData:saved sprint data' + JSON.stringify(res.toJSON());        
+        logger.info('GetBurnDownData:GetBurnDownDataCrawler:saveSprintData:saved sprint data' + JSON.stringify(res.toJSON()));        
         resolve(res.toJSON());
       });
     });
