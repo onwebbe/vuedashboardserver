@@ -116,7 +116,7 @@ class GetBurnDownDataCrawler {
   }
   saveSprintData(sprintReportData) {
     let self = this;
-    let chartid = this.chartid;
+    let chartid = this.chartId;
     return new Promise(async(resolve, reject) => {
       let startDateStr = sprintReportData.sprint.startDate;
       let endDateStr = sprintReportData.sprint.endDate;
@@ -148,7 +148,7 @@ class GetBurnDownDataCrawler {
   }
   deleteSprintData() {
     return new Promise(async(resolve, reject) => {
-      BurnDownChartSprintModel.remove({chartid: this.chartid}, (err, res) => {
+      BurnDownChartSprintModel.remove({chartid: this.chartId}, (err, res) => {
         if (err) {
           logger.error('GetBurnDownData:GetBurnDownDataCrawler:deleteSprintData:delete sprint data error');
           reject(err);
