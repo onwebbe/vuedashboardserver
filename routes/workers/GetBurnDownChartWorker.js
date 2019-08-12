@@ -50,6 +50,7 @@ class GetBurnDownChartWorker {
           if (calculatedDate.getDay() !== 0 && calculatedDate.getDay() !== 6) {
             let storyList = await self.getStoryList(chartid);
             let sprintInfo = await self.getSprintInfo(chartid);
+            logger.info('GetBurnDownChartWorker:getChartData:get sprint information:' + JSON.stringify(sprintInfo));
             sprintInfo = sprintInfo[0];
             let effort = self.getEffortFromStoryList(storyList);
             if (firstEstimated === 0) {
