@@ -86,12 +86,12 @@ class GetBurnDownChartWorker {
       if (new Date(lastCalculatedItemDate).getDay() === 6) {
         lastCalculatedItemDate += 1000 * 60 * 60 * 24 * 2;
       }
-    }
-    let pendingAddItem = {
-      date: new Date(lastCalculatedItemDate),
-      bestrun: firstEstimated - this.getBestRunEffort(sprintInfo, firstEstimated, lastCalculatedItemDate),
-      estimated: -1,
-      logged: -1
+      let pendingAddItem = {
+        date: new Date(lastCalculatedItemDate),
+        bestrun: firstEstimated - this.getBestRunEffort(sprintInfo, firstEstimated, lastCalculatedItemDate),
+        estimated: -1,
+        logged: -1
+      }
     }
     caculatedData.push(pendingAddItem);
   }
