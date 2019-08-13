@@ -76,6 +76,7 @@ class GetBurnDownChartWorker {
     let sprintEnd = new Date(parseInt(sprintInfo.endDate));
     let sprintTotalDay = utils.calculateDay(sprintStart, sprintEnd);
     let daysReuqireFulfill = sprintTotalDay - caculatedData.length;
+    console.log(JSON.stringify(caculatedData));
     let lastCalculatedItem = caculatedData[caculatedData.length - 1];
     let lastCalculatedItemDate = lastCalculatedItem.date.getTime() + (1000 * 60 * 60 * 24);
     for (let i = 0; i < daysReuqireFulfill; i++) {
