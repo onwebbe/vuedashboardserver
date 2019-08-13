@@ -92,8 +92,8 @@ class GetBurnDownChartWorker {
         estimated: -1,
         logged: -1
       }
+      caculatedData.push(pendingAddItem);
     }
-    caculatedData.push(pendingAddItem);
   }
   getEffortFromStoryList(storyList) {
     let estimated = 0;
