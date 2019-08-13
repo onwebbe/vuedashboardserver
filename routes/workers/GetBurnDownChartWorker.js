@@ -77,15 +77,8 @@ class GetBurnDownChartWorker {
     let sprintTotalDay = utils.calculateDay(sprintStart, sprintEnd);
     let daysReuqireFulfill = sprintTotalDay - caculatedData.length;
     let lastCalculatedItem = caculatedData[caculatedData.length - 1];
-    let lastCalculatedItemDate = new Date(lastCalculatedItem.date).getTime() + (1000 * 60 * 60 * 24);
+    let lastCalculatedItemDate = new Date(lastCalculatedItem.date).getTime();
     for (let i = 0; i < daysReuqireFulfill; i++) {
-      let pendingAddItem = {
-        date: new Date(lastCalculatedItemDate),
-        bestrun: firstEstimated - this.getBestRunEffort(sprintInfo, firstEstimated, lastCalculatedItemDate),
-        estimated: -1,
-        logged: -1
-      }
-      caculatedData.push(pendingAddItem);
       lastCalculatedItemDate += 1000 * 60 * 60 * 24;
       if (new Date(lastCalculatedItemDate).getDay() === 0) {
         lastCalculatedItemDate += 1000 * 60 * 60 * 24;
@@ -94,6 +87,13 @@ class GetBurnDownChartWorker {
         lastCalculatedItemDate += 1000 * 60 * 60 * 24 * 2;
       }
     }
+    let pendingAddItem = {
+      date: new Date(lastCalculatedItemDate),
+      bestrun: firstEstimated - this.getBestRunEffort(sprintInfo, firstEstimated, lastCalculatedItemDate),
+      estimated: -1,
+      logged: -1
+    }
+    caculatedData.push(pendingAddItem);
   }
   getEffortFromStoryList(storyList) {
     let estimated = 0;
