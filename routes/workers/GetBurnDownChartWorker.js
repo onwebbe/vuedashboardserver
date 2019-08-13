@@ -86,6 +86,13 @@ class GetBurnDownChartWorker {
         logged: -1
       }
       caculatedData.push(pendingAddItem);
+      lastCalculatedItemDate += 1000 * 60 * 60 * 24;
+      if (new Date(lastCalculatedItemDate).getDay() === 0) {
+        lastCalculatedItemDate += 1000 * 60 * 60 * 24;
+      }
+      if (new Date(lastCalculatedItemDate).getDay() === 6) {
+        lastCalculatedItemDate += 1000 * 60 * 60 * 24 * 2;
+      }
     }
   }
   getEffortFromStoryList(storyList) {
