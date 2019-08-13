@@ -57,6 +57,9 @@ class GetBurnDownChartWorker {
             if (firstEstimated === 0) {
               firstEstimated = effort.estimated;
             }
+            console.log(value.date);
+            console.log(new Date(value.date));
+            console.log(new Date(value.date).getTime());
             let tmpData = {
               date: new Date(value.date).getTime(),
               bestrun: firstEstimated - self.getBestRunEffort(sprintInfo, firstEstimated, calculatedDate),
