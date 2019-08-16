@@ -57,6 +57,9 @@ class GetBurnDownChartWorker {
             if (firstEstimated === 0) {
               firstEstimated = effort.estimated;
             }
+            console.log(value._id);
+            console.log(value.date);
+            console.log(new Date(value.date).getTime());
             let tmpData = {
               date: new Date(value.date).getTime(),
               bestrun: firstEstimated - self.getBestRunEffort(sprintInfo, firstEstimated, calculatedDate),
@@ -77,10 +80,17 @@ class GetBurnDownChartWorker {
     let sprintTotalDay = utils.calculateDay(sprintStart, sprintEnd);
     let daysReuqireFulfill = sprintTotalDay - caculatedData.length;
     let lastCalculatedItem = caculatedData[caculatedData.length - 1];
-    let lastCalculatedItemDate = lastCalculatedItem.date.getTime() + (1000 * 60 * 60 * 24);
+    let lastCalculatedItemDate = new Date(lastCalculatedItem.date).getTime();
     for (let i = 0; i < daysReuqireFulfill; i++) {
+      lastCalculatedItemDate += 1000 * 60 * 60 * 24;
+      if (new Date(lastCalculatedItemDate).getDay() === 0) {
+        lastCalculatedItemDate += 1000 * 60 * 60 * 24;
+      }
+      if (new Date(lastCalculatedItemDate).getDay() === 6) {
+        lastCalculatedItemDate += 1000 * 60 * 60 * 24 * 2;
+      }
       let pendingAddItem = {
-        date: new Date(lastCalculatedItemDate),
+        date: lastCalculatedItemDate,
         bestrun: firstEstimated - this.getBestRunEffort(sprintInfo, firstEstimated, lastCalculatedItemDate),
         estimated: -1,
         logged: -1
