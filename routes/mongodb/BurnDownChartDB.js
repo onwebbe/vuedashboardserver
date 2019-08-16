@@ -22,7 +22,7 @@ BurnDownChartModel.isSameDayExists = function (date) {
   if (!date) {
     date = new Date();
   }
-  let dateQuery = utils.generateMongoDateGapISODate('date', utils.generateDateStr(0), 1);
+  let dateQuery = utils.generateMongoDateGapISODate('date', utils.generateDateStr(2), -2);
   logger.info('BurnDownChartDB:BurnDownChartModel:isSameDayExists:queryString:' + JSON.stringify(dateQuery));
   return new Promise((resolve, reject) => {
     self.find(dateQuery, function (errror, res) {
@@ -30,12 +30,21 @@ BurnDownChartModel.isSameDayExists = function (date) {
         resolve([]);
         return;
       }
-      let foundIDs = [];
-      for (let i = 0; i < res.length; i++) {
-        let item = res[i];
-        foundIDs.push(item._id);
+      let data = res;
+      let isFound = [];
+      let today = new Date();
+      for (let i = 0; i < data.length; i++) {
+        let dataDate = data[i].date;
+        if (dataDate.getFullYear() == today.getFullYear() &&
+              dataDate.getMonth() == today.getMonth() &&
+              dataDate.getDate() == today.getDate() ) {
+          if (isFound == null) {
+            isFound = [];
+          }
+          isFound.push(data[i]._id);
+        }
       }
-      resolve(foundIDs);
+      resolve(isFound);
     });
   });
 }
