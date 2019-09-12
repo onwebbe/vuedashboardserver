@@ -54,7 +54,9 @@ class SonarCrawler {
       console.log('url1:' + url);
       let self = this;
       let authToken = await utils.getAuthToken();
-      request.get(url).set('Authorization', 'Basic ' + authToken).end(res => {
+      request.get(url)
+      .set('Authorization', 'Basic ' + authToken)
+      .end((error, res) => {
         // res.body, res.headers, res.status
         let bodyObj = res.body;
         let measurements = bodyObj.component.measures;
@@ -74,10 +76,6 @@ class SonarCrawler {
         self._data.codeCoverageRawData = bodyObj;
         resolve();
       })
-      .catch(err => {
-        // err.message, err.response
-        console.log(err.message);
-      })
     });
   }
   getNewCodeDetail() {
@@ -87,14 +85,11 @@ class SonarCrawler {
     return new Promise(async(resolve, reject) => {
       console.log('url2:' + url);
       let authToken = await utils.getAuthToken();
-      request.get(url).set('Authorization', 'Basic ' + authToken).end(res => {
+      request.get(url)
+        .set('Authorization', 'Basic ' + authToken).end((error, res) => {
         // res.body, res.headers, res.status
         // console.log(res.body);
         resolve();
-      })
-      .catch(err => {
-        // err.message, err.response
-        console.log(err.message);
       })
     });
   }
