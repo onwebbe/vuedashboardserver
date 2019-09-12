@@ -1,4 +1,6 @@
 const moment = require('moment');
+const ConfigDB = require('./mongodb/DashboardConfigDB');
+
 function composeJSONReply(isSuccess, response, message) {
   if (message == null) {
     message = '';
@@ -114,11 +116,25 @@ function calculateDay(start, end) {
   }
   return totalDay;
 }
+
+function getAuthToken() {
+  return new Promise(async(resolve, reject) => {
+    ConfigDB.find({}, async (error, res) => {
+      // ConfigDB.db.close();
+      if (error) {
+        reject();
+      } else {
+        resolve(res[0].toJSON().burndownchartconfig.token);
+      }
+    })
+  });
+}
 module.exports = {
   composeJSONReply,
   generateMongoDateCheckObj,
   generateMongoDateGap,
   generateDateStr,
   generateMongoDateGapISODate,
-  calculateDay
+  calculateDay,
+  getAuthToken
 }

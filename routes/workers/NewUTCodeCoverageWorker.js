@@ -50,14 +50,17 @@ class SonarCrawler {
       }
       url += '&metricKeys=' + fieldsString;
     }
-    return new Promise((resolve, reject) => {
+    return new Promise(async(resolve, reject) => {
       console.log('url1:' + url);
       let self = this;
-      request.get(url).then(res => {
+      let authToken = await utils.getAuthToken();
+      request.get(url).set('Authorization', 'Basic ' + authToken).end(res => {
         // res.body, res.headers, res.status
         let bodyObj = res.body;
         let measurements = bodyObj.component.measures;
         let dataObj = {};
+
+        
         for (let i = 0; i < measurements.length; i++) {
           let measure = measurements[i];
           if (measure.metric === 'coverage') {
@@ -81,9 +84,10 @@ class SonarCrawler {
     let config = this._config;
     let url = 'https://sf-sonar.devprod.sap.corp/api/measures/component_tree?pageSize=200&metricSortFilter=withMeasuresOnly&metricPeriodSort=1&asc=true&ps=100&metricSort=new_coverage&s=metricPeriod&baseComponentKey=' + config.module + '&metricKeys=coverage%2Cnew_coverage%2Cnew_uncovered_lines%2Cnew_uncovered_conditions&strategy=leaves';
 
-    return new Promise((resolve, reject) => {
+    return new Promise(async(resolve, reject) => {
       console.log('url2:' + url);
-      request.get(url).then(res => {
+      let authToken = await utils.getAuthToken();
+      request.get(url).set('Authorization', 'Basic ' + authToken).end(res => {
         // res.body, res.headers, res.status
         // console.log(res.body);
         resolve();
