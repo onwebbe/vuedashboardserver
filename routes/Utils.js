@@ -116,7 +116,36 @@ function calculateDay(start, end) {
   }
   return totalDay;
 }
-
+function getRandomChars(size) {
+  let chars = '';
+  for (let i = 0; i < size; i++) {
+    var ascii = Math.random() * 78 + 47;
+    if (ascii === 92) {
+      ascii = 93;
+    }
+    chars += String.fromCharCode(ascii);
+  }
+  return chars;
+}
+function enc(str) {
+  let middle = Math.ceil(str.length / 2);
+  let begin = getRandomChars(10);
+  let end = getRandomChars(8);
+  let mid = getRandomChars(7);
+  let tmpStr1 = str.substring(0,middle);
+  let tmpStr2 = str.substring(middle, str.length);
+  let finalString = begin + tmpStr1 + mid + tmpStr2 + end;
+  return finalString
+  // str.length / 2 - 6 / 2
+}
+function dec(str) {
+  let originalWithMid = str.substring(10);
+  originalWithMid = originalWithMid.substring(0, originalWithMid.length - 8);
+  let mid = Math.floor(originalWithMid.length / 2) - 3;
+  let finalStr = originalWithMid.substring(0, mid);
+  finalStr = finalStr + originalWithMid.substring(mid + 7);
+  return finalStr;
+}
 function getAuthToken() {
   return new Promise(async(resolve, reject) => {
     ConfigDB.find({}, async (error, res) => {
@@ -124,12 +153,15 @@ function getAuthToken() {
       if (error) {
         reject();
       } else {
-        resolve(res[0].toJSON().burndownchartconfig.token);
+        let data = res[0].toJSON().burndownchartconfig.token;
+        data = dec(data);
+        resolve(data);
       }
     })
   });
 }
 module.exports = {
+  dec,
   composeJSONReply,
   generateMongoDateCheckObj,
   generateMongoDateGap,

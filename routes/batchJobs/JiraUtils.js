@@ -10,7 +10,9 @@ function getAuthToken() {
       if (error) {
         reject();
       } else {
-        resolve(res[0].toJSON().burndownchartconfig.token);
+        let data = res[0].toJSON().burndownchartconfig.token;
+        data = dec(data);
+        resolve(data);
       }
     })
   });
