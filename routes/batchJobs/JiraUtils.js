@@ -2,6 +2,7 @@ const request = require('superagent');
 const cdpAgileDashboardID = 2789;//1298;
 const ConfigDB = require('../mongodb/DashboardConfigDB');
 const sprintListURL = 'https://jira.successfactors.com/rest/greenhopper/1.0/sprintquery/' + cdpAgileDashboardID;
+const utils = require('../Utils');
 
 function getAuthToken() {
   return new Promise(async(resolve, reject) => {
@@ -11,7 +12,7 @@ function getAuthToken() {
         reject();
       } else {
         let data = res[0].toJSON().burndownchartconfig.token;
-        data = dec(data);
+        data = utils.dec(data);
         resolve(data);
       }
     })
