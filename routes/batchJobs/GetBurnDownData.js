@@ -47,7 +47,9 @@ class GetBurnDownDataCrawler {
     }
     if (config.token == null) {
       // customfield_10002: ticket priority
-      config.token = 'STMyNjQzMjpXYXJtZXIwOTg3xxx';
+      config.token = '';
+    } else {
+      config.token = utils.dec(config.token);
     }
     if (config.getSpringInfoUrl == null) {
       config.getSpringInfoUrl = 'https://jira.successfactors.com/rest/greenhopper/1.0/rapid/charts/sprintreport?rapidViewId=<dashboardid>&sprintId=<sprintid>';
