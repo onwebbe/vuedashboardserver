@@ -8,6 +8,7 @@ var GetNewUTCodeCoverageWorker = require('../workers/GetNewUTCodeCoverageWorker'
 var GetQuanlityTestingFailStatusSummaryWorker = require('../workers/GetQuanlityTestingFailStatusSummaryWorker');
 var ComponentPiplelineRunStatusWorker = require('../workers/ComponentPiplelineRunStatusWorker');
 var GetBurnDownChartWorker = require('../workers/GetBurnDownChartWorker');
+var GetJiraIssueListWorker = require('../workers/GetJiraIssueListWorker')
 
 const logger = require('../../Logger');
 const utils = require('../Utils');
@@ -107,6 +108,14 @@ router.get('/getBurnDownChartWorker', function(req, res, next) {
   getBurnDownChartWorker.init();
   getBurnDownChartWorker.start().then(function (data) {
     res.send(utils.composeJSONReply(true, data, ''));
+  })
+});
+
+router.get('/getJiraIssueListWorker',function(req,res,next){
+  let getJiraIssueListWorker= new GetJiraIssueListWorker();
+  getJiraIssueListWorker.init();
+  getJiraIssueListWorker.start().then(function (data) {
+    res.send(utils.composeJSONReply(true,data,''));
   })
 });
 

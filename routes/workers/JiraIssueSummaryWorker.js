@@ -107,9 +107,10 @@ class JiraIssueSummaryWorker {
     }
     logger.info('JiraIssueSummaryWorker:getJiraData:before get data from url:' + url);
     return new Promise((resolve, reject) => {
+      let authToken= await jiraUtils.getAuthToken();
       request
         .get(url)
-        .set('Authorization', 'Basic aTMyNjQzMjpDb29sMTIzNA==')
+        .set('Authorization', 'Basic ' + authToken)
         .then(res => {
           resolve(res.body);
       })
