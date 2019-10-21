@@ -14,7 +14,7 @@ class GetJiraIssueListWorker {
     logger.info('GetJiraIssueListWorker:init:start with config:' + config ? JSON.stringify(config) : null);
     if (config == null) {
       config = {
-        baseURL: 'https://jira.successfactors.com/rest/api/2/search?jql=(project="Career+Development+Plan+(CDP)"+or+project="People+Like+Me")+AND+resolution=Unresolved+AND+"Issue+Category"="Live+Customer+Issue"+and+type+=+"Customer+Issue"+order+by+updated+DESC&fields=summary,priority,assignee,created,customfield_10002'
+        baseURL: 'https://jira.successfactors.com/rest/api/2/search?jql=(project="Career+Development+Plan+(CDP)"+or+project="People+Like+Me")+AND+resolution=Unresolved+AND+"Issue+Category"!="Internal+Issue"+and+type+=+"Customer+Issue"+order+by+updated+DESC&fields=summary,priority,assignee,created,customfield_10002'
       };
     }
     logger.info('GetJiraIssueListWorker:init:init data for baseURL:' + config.baseURL);
