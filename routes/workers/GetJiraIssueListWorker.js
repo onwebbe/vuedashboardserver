@@ -47,6 +47,9 @@ class GetJiraIssueListWorker {
       request
         .get(url)
         .set('Authorization', 'Basic ' + authToken)
+        .set('Accept', 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3')
+        .set('Cookie', 'SESSIONCOOKIE=SessionCookie; LOGOUTCOOKIE=1cd60907-7062-4e3c-b2c2-511c928a6db2; jira.editor.user.mode=source; JSESSIONID=396EB3CFEF8F3EEF10569BF2F29C5881; SAMLCOOKIE=XliGA8a5JKYaLjnOYR9BJFAVj7QADPUdeRH5sqfFBnEz5Ec7Xqnt/WXcp75cfR9TIyUeqLDnOXrnXGSozPfylQ==; atlassian.xsrf.token=AU6R-ZM9V-XXIL-R3RX_ec5435c194cbf45804bdec934adca96e5a9a7f2d_lin')
+        .set('Sec-Fetch-User', '?1')
         .then(res => {
           resolve(res.body);
       }, err =>{
@@ -61,3 +64,8 @@ class GetJiraIssueListWorker {
 }
 
 module.exports = GetJiraIssueListWorker;
+// let getJiraIssueListWorker= new GetJiraIssueListWorker();
+// getJiraIssueListWorker.init();
+// getJiraIssueListWorker.start().then(function (data) {
+//   console.log(data);
+// });
