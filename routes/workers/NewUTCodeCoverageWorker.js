@@ -55,7 +55,7 @@ class SonarCrawler {
       let self = this;
       let authToken = await utils.getAuthToken();
       request.get(url)
-      .set('Authorization', 'Basic ' + authToken)
+      //.set('Authorization', 'Basic ' + authToken)
       .end((error, res) => {
         // res.body, res.headers, res.status
         let bodyObj = res.body;
@@ -86,7 +86,7 @@ class SonarCrawler {
       console.log('url2:' + url);
       let authToken = await utils.getAuthToken();
       request.get(url)
-        .set('Authorization', 'Basic ' + authToken).end((error, res) => {
+        //.set('Authorization', 'Basic ' + authToken).end((error, res) => {
         // res.body, res.headers, res.status
         // console.log(res.body);
         resolve();
