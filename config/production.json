@@ -1,8 +1,10 @@
 {
   "mongoDBConfig": {
-    "connectURL"  : "mongodb://localhost:27007/vuedashboardtiles",
-    "user"        : "vuedashboard",
-    "password"    : "tiles"
+    "connectURL"  : "mongodb://mongodb/vuedashboardtiles",
+    "user"        : "",
+    "password"    : "",
+    "userbak"        : "vuedashboard",
+    "passwordbak"    : "tiles"
   },
   "loggerConfig": {
     "usage": {

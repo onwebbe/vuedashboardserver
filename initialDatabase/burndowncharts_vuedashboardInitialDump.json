@@ -1,0 +1,81 @@
+{"_id":{"$oid":"5d4127b736b956adaeb5f31f"},"moduleName":"au-cdp","date":{"$date":"2019-07-31T12:00:02.783Z"},"release":"b1908","sprintName":"CDP_B1908_Sprint1","__v":0}
+{"_id":{"$oid":"5d41bb02a4f018ee3cf19e45"},"moduleName":"au-cdp","date":{"$date":"2019-07-31T16:00:02.609Z"},"release":"b1908","sprintName":"CDP_B1908_Sprint1","__v":0}
+{"_id":{"$oid":"5d41f342d4aab4324d24e4da"},"moduleName":"au-cdp","date":{"$date":"2019-07-31T20:00:02.177Z"},"release":"b1908","sprintName":"CDP_B1908_Sprint1","__v":0}
+{"_id":{"$oid":"5d422b8245962058c8dc9ef9"},"moduleName":"au-cdp","date":{"$date":"2019-08-01T12:00:02.517Z"},"release":"b1908","sprintName":"CDP_B1908_Sprint1","__v":0}
+{"_id":{"$oid":"5d430c82a8a5879bd2487ae1"},"moduleName":"au-cdp","date":{"$date":"2019-08-01T16:00:02.584Z"},"release":"b1908","sprintName":"CDP_B1908_Sprint1","__v":0}
+{"_id":{"$oid":"5d4344c292f5f1adec2b9653"},"moduleName":"au-cdp","date":{"$date":"2019-08-01T20:00:02.635Z"},"release":"b1908","sprintName":"CDP_B1908_Sprint1","__v":0}
+{"_id":{"$oid":"5d437d02813859c624bc2b32"},"moduleName":"au-cdp","date":{"$date":"2019-08-02T12:00:02.741Z"},"release":"b1908","sprintName":"CDP_B1908_Sprint1","__v":0}
+{"_id":{"$oid":"5d445e02abe61da98f2ce20f"},"moduleName":"au-cdp","date":{"$date":"2019-08-02T16:00:02.492Z"},"release":"b1908","sprintName":"CDP_B1908_Sprint1","__v":0}
+{"_id":{"$oid":"5d4496428acb91ec1a4dc0d8"},"moduleName":"au-cdp","date":{"$date":"2019-08-02T20:00:02.433Z"},"release":"b1908","sprintName":"CDP_B1908_Sprint1","__v":0}
+{"_id":{"$oid":"5d44ce82c9243618d59b949a"},"moduleName":"au-cdp","date":{"$date":"2019-08-03T12:00:02.527Z"},"release":"b1908","sprintName":"CDP_B1908_Sprint1","__v":0}
+{"_id":{"$oid":"5d45af823dad056043b3f2a4"},"moduleName":"au-cdp","date":{"$date":"2019-08-03T16:00:02.864Z"},"release":"b1908","sprintName":"CDP_B1908_Sprint1","__v":0}
+{"_id":{"$oid":"5d45e7c27c17537b94f6f18c"},"moduleName":"au-cdp","date":{"$date":"2019-08-03T20:00:02.777Z"},"release":"b1908","sprintName":"CDP_B1908_Sprint1","__v":0}
+{"_id":{"$oid":"5d462002f1bc318ce4111cda"},"moduleName":"au-cdp","date":{"$date":"2019-08-04T12:00:02.022Z"},"release":"b1908","sprintName":"CDP_B1908_Sprint1","__v":0}
+{"_id":{"$oid":"5d47010277cda6c5dd164073"},"moduleName":"au-cdp","date":{"$date":"2019-08-04T16:00:02.765Z"},"release":"b1908","sprintName":"CDP_B1908_Sprint1","__v":0}
+{"_id":{"$oid":"5d473943932b96da3040cc96"},"moduleName":"au-cdp","date":{"$date":"2019-08-04T20:00:03.231Z"},"release":"b1908","sprintName":"CDP_B1908_Sprint1","__v":0}
+{"_id":{"$oid":"5d47718540bcb6f2bd9c36a4"},"moduleName":"au-cdp","date":{"$date":"2019-08-05T07:37:46.192Z"},"release":"b1908","sprintName":"CDP_B1908_Sprint1","__v":0}
+{"_id":{"$oid":"5d48ece3e79ef0068d24d323"},"moduleName":"au-cdp","date":{"$date":"2019-06-23T08:43:43.666Z"},"release":"b1908","sprintName":"CDP_B1908_Sprint4"}
+{"_id":{"$oid":"5d48ece3e79ef0068d24d324"},"moduleName":"au-cdp","date":{"$date":"2019-06-24T08:43:43.666Z"},"release":"b1908","sprintName":"CDP_B1908_Sprint4"}
+{"_id":{"$oid":"5d48ece3e79ef0068d24d325"},"moduleName":"au-cdp","date":{"$date":"2019-06-25T08:43:43.666Z"},"release":"b1908","sprintName":"CDP_B1908_Sprint4"}
+{"_id":{"$oid":"5d48ece3e79ef0068d24d326"},"moduleName":"au-cdp","date":{"$date":"2019-06-26T08:43:43.666Z"},"release":"b1908","sprintName":"CDP_B1908_Sprint4"}
+{"_id":{"$oid":"5d48ece3e79ef0068d24d327"},"moduleName":"au-cdp","date":{"$date":"2019-06-27T08:43:43.666Z"},"release":"b1908","sprintName":"CDP_B1908_Sprint4"}
+{"_id":{"$oid":"5d48ece3e79ef0068d24d328"},"moduleName":"au-cdp","date":{"$date":"2019-06-28T08:43:43.666Z"},"release":"b1908","sprintName":"CDP_B1908_Sprint4"}
+{"_id":{"$oid":"5d48ece3e79ef0068d24d329"},"moduleName":"au-cdp","date":{"$date":"2019-06-29T08:43:43.666Z"},"release":"b1908","sprintName":"CDP_B1908_Sprint4"}
+{"_id":{"$oid":"5d48ece3e79ef0068d24d32a"},"moduleName":"au-cdp","date":{"$date":"2019-06-30T08:43:43.666Z"},"release":"b1908","sprintName":"CDP_B1908_Sprint4"}
+{"_id":{"$oid":"5d48ece3e79ef0068d24d32b"},"moduleName":"au-cdp","date":{"$date":"2019-07-01T08:43:43.666Z"},"release":"b1908","sprintName":"CDP_B1908_Sprint4"}
+{"_id":{"$oid":"5d48ece3e79ef0068d24d32d"},"moduleName":"au-cdp","date":{"$date":"2019-07-02T08:43:43.666Z"},"release":"b1908","sprintName":"CDP_B1908_Sprint4"}
+{"_id":{"$oid":"5d48ece3e79ef0068d24d32e"},"moduleName":"au-cdp","date":{"$date":"2019-07-03T08:43:43.666Z"},"release":"b1908","sprintName":"CDP_B1908_Sprint4"}
+{"_id":{"$oid":"5d48ece3e79ef0068d24d32f"},"moduleName":"au-cdp","date":{"$date":"2019-07-04T08:43:43.666Z"},"release":"b1908","sprintName":"CDP_B1908_Sprint4"}
+{"_id":{"$oid":"5d48ece3e79ef0068d24d330"},"moduleName":"au-cdp","date":{"$date":"2019-07-05T08:43:43.666Z"},"release":"b1908","sprintName":"CDP_B1908_Sprint4"}
+{"_id":{"$oid":"5d48ece3e79ef0068d24d331"},"moduleName":"au-cdp","date":{"$date":"2019-07-06T08:43:43.666Z"},"release":"b1908","sprintName":"CDP_B1908_Sprint4"}
+{"_id":{"$oid":"5d48ece3e79ef0068d24d332"},"moduleName":"au-cdp","date":{"$date":"2019-07-07T08:43:43.666Z"},"release":"b1908","sprintName":"CDP_B1908_Sprint4"}
+{"_id":{"$oid":"5d51c545c2ecd678fc0e8cf5"},"moduleName":"au-cdp","date":{"$date":"2019-08-12T00:00:05.346Z"},"release":"b1911","sprintName":"CDP_B1911_Sprint 1","__v":0}
+{"_id":{"$oid":"5d5316c517643758e4d071a2"},"moduleName":"au-cdp","date":{"$date":"2019-08-13T00:00:05.346Z"},"release":"b1911","sprintName":"CDP_B1911_Sprint 1","__v":0}
+{"_id":{"$oid":"5d534f04133d0d68becad424"},"moduleName":"au-cdp","date":{"$date":"2019-08-14T00:00:05.346Z"},"release":"b1911","sprintName":"CDP_B1911_Sprint 1","__v":0}
+{"_id":{"$oid":"5d55b9c4bb51ad448ca344ce"},"moduleName":"au-cdp","date":{"$date":"2019-08-15T00:00:05.346Z"},"release":"b1911","sprintName":"CDP_B1911_Sprint 1","__v":0}
+{"_id":{"$oid":"5d55f20422d9e459cebff510"},"moduleName":"au-cdp","date":{"$date":"2019-08-16T12:00:04.438Z"},"release":"b1911","sprintName":"CDP_B1911_Sprint 1","__v":0}
+{"_id":{"$oid":"5d56d3040f2365a1a394fe85"},"moduleName":"au-cdp","date":{"$date":"2019-08-17T12:00:05.163Z"},"release":"b1911","sprintName":"CDP_B1911_Sprint 1","__v":0}
+{"_id":{"$oid":"5d5824844c4482075bd40924"},"moduleName":"au-cdp","date":{"$date":"2019-08-18T12:00:03.963Z"},"release":"b1911","sprintName":"CDP_B1911_Sprint 1","__v":0}
+{"_id":{"$oid":"5d5976059811356f92000490"},"moduleName":"au-cdp","date":{"$date":"2019-08-19T12:00:04.516Z"},"release":"b1911","sprintName":"CDP_B1911_Sprint 1","__v":0}
+{"_id":{"$oid":"5d5ac784cc3cbe98526d710b"},"moduleName":"au-cdp","date":{"$date":"2019-08-20T12:00:04.039Z"},"release":"b1911","sprintName":"CDP_B1911_Sprint 1","__v":0}
+{"_id":{"$oid":"5d5c19043db7aade53d20886"},"moduleName":"au-cdp","date":{"$date":"2019-08-21T12:00:04.142Z"},"release":"b1911","sprintName":"CDP_B1911_Sprint 1","__v":0}
+{"_id":{"$oid":"5d5d6a847093da49fc5a3390"},"moduleName":"au-cdp","date":{"$date":"2019-08-22T12:00:05.279Z"},"release":"b1911","sprintName":"CDP_B1911_Sprint 1","__v":0}
+{"_id":{"$oid":"5d5ebc04d5f97b241e980127"},"moduleName":"au-cdp","date":{"$date":"2019-08-23T12:00:04.204Z"},"release":"b1911","sprintName":"CDP_B1911_Sprint 1","__v":0}
+{"_id":{"$oid":"5d600d84dfd9d28119b46991"},"moduleName":"au-cdp","date":{"$date":"2019-08-24T12:00:04.747Z"},"release":"b1911","sprintName":"CDP_B1911_Sprint 1","__v":0}
+{"_id":{"$oid":"5d615f04078b3ddb834da75d"},"moduleName":"au-cdp","date":{"$date":"2019-08-25T12:00:04.363Z"},"release":"b1911","sprintName":"CDP_B1911_Sprint 1","__v":0}
+{"_id":{"$oid":"5d62b084151d817011feafa5"},"moduleName":"au-cdp","date":{"$date":"2019-08-26T15:32:59.125Z"},"release":"b1911","sprintName":"CDP_B1911_Sprint 2","__v":0}
+{"_id":{"$oid":"5d640206d2a720f42b1352e5"},"moduleName":"au-cdp","date":{"$date":"2019-08-27T12:00:04.910Z"},"release":"b1911","sprintName":"CDP_B1911_Sprint 2","__v":0}
+{"_id":{"$oid":"5d65538475cd9dd1a14d694d"},"moduleName":"au-cdp","date":{"$date":"2019-08-28T12:00:04.442Z"},"release":"b1911","sprintName":"CDP_B1911_Sprint 2","__v":0}
+{"_id":{"$oid":"5d66a504eda3bd80ccf862af"},"moduleName":"au-cdp","date":{"$date":"2019-08-29T12:00:05.046Z"},"release":"b1911","sprintName":"CDP_B1911_Sprint 2","__v":0}
+{"_id":{"$oid":"5d67f683e6f383f2a7a7e893"},"moduleName":"au-cdp","date":{"$date":"2019-08-30T12:00:04.716Z"},"release":"b1911","sprintName":"CDP_B1911_Sprint 2","__v":0}
+{"_id":{"$oid":"5d69480495ed7f63995c64c6"},"moduleName":"au-cdp","date":{"$date":"2019-08-31T12:00:04.672Z"},"release":"b1911","sprintName":"CDP_B1911_Sprint 2","__v":0}
+{"_id":{"$oid":"5d6a9985a05185f1e7eade70"},"moduleName":"au-cdp","date":{"$date":"2019-09-01T12:00:04.486Z"},"release":"b1911","sprintName":"CDP_B1911_Sprint 2","__v":0}
+{"_id":{"$oid":"5d6beb04e792b08c621524e0"},"moduleName":"au-cdp","date":{"$date":"2019-09-02T12:00:04.781Z"},"release":"b1911","sprintName":"CDP_B1911_Sprint 2","__v":0}
+{"_id":{"$oid":"5d6d3c8422bc15bb6aafcced"},"moduleName":"au-cdp","date":{"$date":"2019-09-03T12:00:04.337Z"},"release":"b1911","sprintName":"CDP_B1911_Sprint 2","__v":0}
+{"_id":{"$oid":"5d6e8e04d7a6f6c9bb00e8d3"},"moduleName":"au-cdp","date":{"$date":"2019-09-04T12:00:04.831Z"},"release":"b1911","sprintName":"CDP_B1911_Sprint 2","__v":0}
+{"_id":{"$oid":"5d6fdf84f1729070bd4cba4c"},"moduleName":"au-cdp","date":{"$date":"2019-09-05T12:00:03.850Z"},"release":"b1911","sprintName":"CDP_B1911_Sprint 2","__v":0}
+{"_id":{"$oid":"5d713104529f1235f8e105ea"},"moduleName":"au-cdp","date":{"$date":"2019-09-06T08:00:04.774Z"},"release":"b1911","sprintName":"CDP_B1911_Sprint 2","__v":0}
+{"_id":{"$oid":"5d75ce43b77ce61282caf4ba"},"moduleName":"au-cdp","date":{"$date":"2019-09-09T12:00:03.982Z"},"release":"b1911","sprintName":"CDP_B1911_Sprint 3","__v":0}
+{"_id":{"$oid":"5d76770388ee0d76205625fc"},"moduleName":"au-cdp","date":{"$date":"2019-09-10T12:00:09.435Z"},"release":"b1911","sprintName":"CDP_B1911_Sprint 3","__v":0}
+{"_id":{"$oid":"5d77c884e3a0ab75bbf24743"},"moduleName":"au-cdp","date":{"$date":"2019-09-11T12:00:05.004Z"},"release":"b1911","sprintName":"CDP_B1911_Sprint 3","__v":0}
+{"_id":{"$oid":"5d791a041d1884678a11ada7"},"moduleName":"au-cdp","date":{"$date":"2019-09-12T12:00:04.359Z"},"release":"b1911","sprintName":"CDP_B1911_Sprint 3","__v":0}
+{"_id":{"$oid":"5d7a6b840b732a530aa221a2"},"moduleName":"au-cdp","date":{"$date":"2019-09-13T12:00:04.461Z"},"release":"b1911","sprintName":"CDP_B1911_Sprint 3","__v":0}
+{"_id":{"$oid":"5d7bbd04cbab1be608897314"},"moduleName":"au-cdp","date":{"$date":"2019-09-14T12:00:07.603Z"},"release":"b1911","sprintName":"CDP_B1911_Sprint 3","__v":0}
+{"_id":{"$oid":"5d7d0e842a901e8beda0297b"},"moduleName":"au-cdp","date":{"$date":"2019-09-15T12:00:04.019Z"},"release":"b1911","sprintName":"CDP_B1911_Sprint 3","__v":0}
+{"_id":{"$oid":"5d7e6004cdc9ca46dde70cae"},"moduleName":"au-cdp","date":{"$date":"2019-09-16T12:00:04.939Z"},"release":"b1911","sprintName":"CDP_B1911_Sprint 3","__v":0}
+{"_id":{"$oid":"5d7fb185d3bdc3ad64f616c7"},"moduleName":"au-cdp","date":{"$date":"2019-09-17T12:00:04.627Z"},"release":"b1911","sprintName":"CDP_B1911_Sprint 3","__v":0}
+{"_id":{"$oid":"5d8103052d70b007f3c4e006"},"moduleName":"au-cdp","date":{"$date":"2019-09-18T12:00:05.685Z"},"release":"b1911","sprintName":"CDP_B1911_Sprint 3","__v":0}
+{"_id":{"$oid":"5d825485fd30b7e0814001df"},"moduleName":"au-cdp","date":{"$date":"2019-09-19T12:00:04.267Z"},"release":"b1911","sprintName":"CDP_B1911_Sprint 3","__v":0}
+{"_id":{"$oid":"5d83a6045016acd970aece03"},"moduleName":"au-cdp","date":{"$date":"2019-09-20T00:00:04.589Z"},"release":"b1911","sprintName":"CDP_B1911_Sprint 3","__v":0}
+{"_id":{"$oid":"5d88b3c489ae98d1861f18f5"},"moduleName":"au-cdp","date":{"$date":"2019-09-23T12:00:04.615Z"},"release":"b1911","sprintName":"CDP_B1911_Sprint 4","__v":0}
+{"_id":{"$oid":"5d88ec046a97616b87a4b7af"},"moduleName":"au-cdp","date":{"$date":"2019-09-24T12:00:07.048Z"},"release":"b1911","sprintName":"CDP_B1911_Sprint 4","__v":0}
+{"_id":{"$oid":"5d8a3d8436b6382ff5f9ea31"},"moduleName":"au-cdp","date":{"$date":"2019-09-25T12:00:04.664Z"},"release":"b1911","sprintName":"CDP_B1911_Sprint 4","__v":0}
+{"_id":{"$oid":"5d8b8f04a115590472ef235b"},"moduleName":"au-cdp","date":{"$date":"2019-09-26T12:00:09.515Z"},"release":"b1911","sprintName":"CDP_B1911_Sprint 4","__v":0}
+{"_id":{"$oid":"5d8d894553f7785a79a46a05"},"moduleName":"au-cdp","date":{"$date":"2019-09-27T12:00:04.832Z"},"release":"b1911","sprintName":"CDP_B1911_Sprint 4","__v":0}
+{"_id":{"$oid":"5d8e320420e6457a63da65be"},"moduleName":"au-cdp","date":{"$date":"2019-09-28T12:00:04.592Z"},"release":"b1911","sprintName":"CDP_B1911_Sprint 4","__v":0}
+{"_id":{"$oid":"5d8f8383fc2fe08d8162ea1f"},"moduleName":"au-cdp","date":{"$date":"2019-09-29T12:00:04.285Z"},"release":"b1911","sprintName":"CDP_B1911_Sprint 4","__v":0}
+{"_id":{"$oid":"5d90d50470524eb30d10470a"},"moduleName":"au-cdp","date":{"$date":"2019-09-30T12:00:04.623Z"},"release":"b1911","sprintName":"CDP_B1911_Sprint 4","__v":0}
+{"_id":{"$oid":"5d9226845f4941cb84bfe9df"},"moduleName":"au-cdp","date":{"$date":"2019-10-01T12:00:05.779Z"},"release":"b1911","sprintName":"CDP_B1911_Sprint 4","__v":0}
+{"_id":{"$oid":"5d93780abdb1f9f6826eb797"},"moduleName":"au-cdp","date":{"$date":"2019-10-02T12:00:04.059Z"},"release":"b1911","sprintName":"CDP_B1911_Sprint 4","__v":0}
+{"_id":{"$oid":"5d94c984f9190061dabcefa6"},"moduleName":"au-cdp","date":{"$date":"2019-10-03T12:00:04.141Z"},"release":"b1911","sprintName":"CDP_B1911_Sprint 4","__v":0}
+{"_id":{"$oid":"5d961b04cef473946964f668"},"moduleName":"au-cdp","date":{"$date":"2019-10-04T00:00:04.221Z"},"release":"b1911","sprintName":"CDP_B1911_Sprint 4","__v":0}
