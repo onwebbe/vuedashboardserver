@@ -8,7 +8,11 @@ var GetNewUTCodeCoverageWorker = require('../workers/GetNewUTCodeCoverageWorker'
 var GetQuanlityTestingFailStatusSummaryWorker = require('../workers/GetQuanlityTestingFailStatusSummaryWorker');
 var ComponentPiplelineRunStatusWorker = require('../workers/ComponentPiplelineRunStatusWorker');
 var GetBurnDownChartWorker = require('../workers/GetBurnDownChartWorker');
-var GetJiraIssueListWorker = require('../workers/GetJiraIssueListWorker')
+var GetJiraIssueListWorker = require('../workers/GetJiraIssueListWorker');
+var NewUTCodeCoverageWorker = require('../workers/NewUTCodeCoverageWorker');
+var UpdateCurrentSprint = require('../batchJobs/UpdateCurrentSprint');
+var GetBurnDownData = require('../batchJobs/GetBurnDownData');
+
 
 const logger = require('../../Logger');
 const utils = require('../Utils');
@@ -118,5 +122,24 @@ router.get('/getJiraIssueListWorker',function(req,res,next){
     res.send(utils.composeJSONReply(true,data,''));
   })
 });
+router.get('/getNewUTCodeCoverageFromSonar',function(req,res,next){
+  let fetchNewUTCodeCoverageWorker= new NewUTCodeCoverageWorker();
+  fetchNewUTCodeCoverageWorker.startAll().then(() => {
+    res.send(utils.composeJSONReply(true, {}, ''));
+  });
+});
 
+router.get('/updateCurrentSprintFromJira',function(req,res,next){
+  let updateCurrentSprintFromJira = new UpdateCurrentSprint();
+  updateCurrentSprintFromJira.startAll().then(() => {
+    res.send(utils.composeJSONReply(true, {}, ''));
+  });
+});
+
+router.get('/getBurnDownDataFromJira',function(req,res,next){
+  let getBurnDownDataFromJira = new GetBurnDownData();
+  getBurnDownDataFromJira.startAll().then(() => {
+    res.send(utils.composeJSONReply(true, {}, ''));
+  });
+});
 module.exports = router;

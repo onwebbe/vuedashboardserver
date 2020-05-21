@@ -10,7 +10,7 @@
     "fail" : false
   },
   "mongoDBConfig": {
-    "connectURL"  : "mongodb://localhost/vuedashboardtiles",
+    "connectURL"  : "mongodb://10.129.126.28:37117/vuedashboardtiles",
     "user"        : "",
     "password"    : ""
   },

@@ -5,8 +5,8 @@ mongoexport --db vuedashboardtiles -c dashboardconfigs -o dashboardconfigs_vueda
 mongoexport --db vuedashboardtiles -c newutcodecoverages -o newutcodecoverages_vuedashboardInitialDump.json
 
 
-mongoimport --port 37117 --db vuedashboardtiles -c burndowncharts --file burndowncharts_vuedashboardInitialDump.json
-mongoimport --port 37117 --db vuedashboardtiles -c burndownchartsprints --file burndownchartsprints_vuedashboardInitialDump.json
-mongoimport --port 37117 --db vuedashboardtiles -c dashboardconfigs --file burndownchartstories_vuedashboardInitialDump.json
-mongoimport --port 37117 --db vuedashboardtiles -c sprintdays --file dashboardconfigs_vuedashboardInitialDump.json
-mongoimport --port 37117 --db vuedashboardtiles -c newutcodecoverages --file newutcodecoverages_vuedashboardInitialDump.json
+mongoimport --port 27017 --db vuedashboardtiles -c burndowncharts --file burndowncharts_vuedashboardInitialDump.json
+mongoimport --port 27017 --db vuedashboardtiles -c burndownchartsprints --file burndownchartsprints_vuedashboardInitialDump.json
+mongoimport --port 27017 --db vuedashboardtiles -c dashboardconfigs --file burndownchartstories_vuedashboardInitialDump.json
+mongoimport --port 27017 --db vuedashboardtiles -c sprintdays --file dashboardconfigs_vuedashboardInitialDump.json
+mongoimport --port 27017 --db vuedashboardtiles -c newutcodecoverages --file newutcodecoverages_vuedashboardInitialDump.json

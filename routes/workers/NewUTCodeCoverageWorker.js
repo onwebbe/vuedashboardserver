@@ -191,22 +191,41 @@ class SonarCrawler {
     });
   }
 }
-let sonarCrawlerCDP = new SonarCrawler();
-sonarCrawlerCDP.init();
 
-let sonarCrawlerPLM = new SonarCrawler();
-sonarCrawlerPLM.init({
-  module: 'au-leonardoml'
-});
-
-async function startAll() {
-  try {
-    await sonarCrawlerCDP.start();
-  } catch (e) {}
-  try {
-    await sonarCrawlerPLM.start();
-  } catch (e) {}
-  CoverageDB.db.close();
+class NewUTCodeCoverageWorker {
+  async startAll() {
+    try {
+      let sonarCrawlerCDP = new SonarCrawler();
+      sonarCrawlerCDP.init();
+      await sonarCrawlerCDP.start();
+    } catch (e) {}
+    try {
+      let sonarCrawlerPLM = new SonarCrawler();
+      sonarCrawlerPLM.init({
+        module: 'au-leonardoml'
+      });
+      await sonarCrawlerPLM.start();
+    } catch (e) {}
+    // CoverageDB.db.close();
+  }
 }
-startAll();
+module.exports = NewUTCodeCoverageWorker;
+// let sonarCrawlerCDP = new SonarCrawler();
+// sonarCrawlerCDP.init();
+
+// let sonarCrawlerPLM = new SonarCrawler();
+// sonarCrawlerPLM.init({
+//   module: 'au-leonardoml'
+// });
+
+// async function startAll() {
+//   try {
+//     await sonarCrawlerCDP.start();
+//   } catch (e) {}
+//   try {
+//     await sonarCrawlerPLM.start();
+//   } catch (e) {}
+//   CoverageDB.db.close();
+// }
+// startAll();
 // https://sf-sonar.devprod.sap.corp/api/measures/component?componentKey=au-cdp&metricKeys=new_coverage

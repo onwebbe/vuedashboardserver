@@ -269,6 +269,16 @@ class GetBurnDownDataCrawler {
       }
     });
   }
+  async startAll() {
+    try {
+      await getDashboardConfig();
+    } catch (e) {
+      logger.error('GetBurnDownData:error when start:' + e);
+    }
+    // BurnDownChartModel.db.close();
+    // BurnDownChartStoryModel.db.close();
+    // ConfigDB.db.close();
+  }
 }
 
 
@@ -302,16 +312,16 @@ function getDashboardConfig() {
     });
   });
 }
+module.exports = GetBurnDownDataCrawler;
+// async function startProcess() {
+//   try {
+//     await getDashboardConfig();
+//   } catch (e) {
+//     logger.error('GetBurnDownData:error when start:' + e);
+//   }
+//   BurnDownChartModel.db.close();
+//   BurnDownChartStoryModel.db.close();
+//   ConfigDB.db.close();
+// }
 
-async function startProcess() {
-  try {
-    await getDashboardConfig();
-  } catch (e) {
-    logger.error('GetBurnDownData:error when start:' + e);
-  }
-  BurnDownChartModel.db.close();
-  BurnDownChartStoryModel.db.close();
-  ConfigDB.db.close();
-}
-
-startProcess();
+// startProcess();

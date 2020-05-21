@@ -62,14 +62,22 @@ class UpdateCurrentSprint {
       }
     });
   }
+  async startAll() {
+    try {
+      await this.start();
+    } catch(e) {}
+    
+    // ConfigDB.db.close();
+  }
 }
+module.exports = UpdateCurrentSprint;
 
-async function startProcess() {
-  let t = new UpdateCurrentSprint();
-  try {
-    await t.start();
-  } catch(e) {}
+// async function startProcess() {
+//   let t = new UpdateCurrentSprint();
+  // try {
+  //   await t.start();
+  // } catch(e) {}
   
-  ConfigDB.db.close();
-}
-startProcess();
+  // ConfigDB.db.close();
+// }
+// startProcess();
